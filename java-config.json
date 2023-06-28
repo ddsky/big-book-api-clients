@@ -1,0 +1,14 @@
+{
+    "artifactId": "com.bigbookapi",
+    "artifactUrl": "https://bigbookapi.com/sdks",
+    "dateLibrary": "java8",
+    "artifactDescription": "Java Client for the Big Book API",
+    "developerName": "David Urbansky",
+	"developerEmail": "mail@bigbookapi.com",
+	"developerOrganization": "dsky",
+	"developerOrganizationUrl": "https://bigbookapi.com",
+	"licenseName": "Big Book API license",
+	"licenseUrl": "https://bigbookapi.com/terms",
+	"java8": true
+}
+
