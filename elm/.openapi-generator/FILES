@@ -1,0 +1,8 @@
+.gitignore
+.openapi-generator-ignore
+README.md
+elm.json
+src/Api.elm
+src/Api/Time.elm
+src/com/bigbookapi/Default.elm
+src/com/bigbookapi/client/model/Data.elm

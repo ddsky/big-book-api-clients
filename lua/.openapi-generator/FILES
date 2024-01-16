@@ -1,0 +1,6 @@
+.gitignore
+.openapi-generator-ignore
+git_push.sh
+openapiclient-1.0.0-1.rockspec
+openapiclient/api/default_api.lua
+spec/default_api_spec.lua

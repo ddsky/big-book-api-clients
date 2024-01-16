@@ -1,0 +1,12 @@
+.gitignore
+.openapi-generator-ignore
+com/bigbookapi/api.ts
+com/bigbookapi/client/README.md
+com/bigbookapi/client/api.module.ts
+com/bigbookapi/client/configuration.ts
+com/bigbookapi/client/encoder.ts
+com/bigbookapi/client/index.ts
+com/bigbookapi/client/model/models.ts
+com/bigbookapi/client/variables.ts
+com/bigbookapi/default.service.ts
+git_push.sh

@@ -1,0 +1,6 @@
+.gitignore
+.openapi-generator-ignore
+git_push.sh
+project.clj
+src/big_book_api/api/default.clj
+src/big_book_api/core.clj

@@ -1,0 +1,438 @@
+openapi: 3.0.0
+info:
+  contact:
+    email: mail@bigbookapi.com
+    name: David Urbansky
+  description: The world's book wrapped into a single API.
+  termsOfService: https://bigbookapi.com/terms
+  title: Big Book API
+  version: "1.0"
+servers:
+- url: https://api.bigbookapi.com
+security:
+- apiKey: []
+- headerApiKey: []
+paths:
+  /search-books:
+    get:
+      deprecated: false
+      description: ' Search and filter books based on matching a query, the ISBN,
+        rating, and more fields. The query is semantically parsed using our own large
+        ontology. That means you can search for "books about dogs" and will automatically
+        also find books about "border collies" and other types without specifying
+        them in the query. '
+      externalDocs:
+        description: Read entire docs
+        url: https://bigbookapi.com/docs#Search-Books
+      operationId: searchBooks
+      parameters:
+      - description: The search query.
+        explode: false
+        in: query
+        name: query
+        required: false
+        schema:
+          example: books about wizards
+          type: string
+        style: form
+      - description: The books must have been published after this year.
+        explode: false
+        in: query
+        name: earliest-publish-year
+        required: false
+        schema:
+          example: 2022
+          type: number
+        style: form
+      - description: The books must have been published before this year.
+        explode: false
+        in: query
+        name: latest-publish-year
+        required: false
+        schema:
+          example: 2023
+          type: number
+        style: form
+      - description: The minimum rating the book must have gotten in the interval
+          [0,1].
+        explode: false
+        in: query
+        name: min-rating
+        required: false
+        schema:
+          example: 0.8
+          type: number
+        style: form
+      - description: The maximum rating the book must have gotten in the interval
+          [0,1].
+        explode: false
+        in: query
+        name: max-rating
+        required: false
+        schema:
+          example: 0.99
+          type: number
+        style: form
+      - description: A comma-separated list of  genres. Only books from any of the
+          given genres will be returned.
+        explode: false
+        in: query
+        name: genres
+        required: false
+        schema:
+          example: nonfiction
+          type: string
+        style: form
+      - description: A comma-separated list of author ids or names. Only books from
+          any of the given authors will be returned. You can retrieve author ids from
+          the search authors endpoint. Pass author names is slower and if two authors
+          have the same name you can't disambiguate.
+        explode: false
+        in: query
+        name: authors
+        required: false
+        schema:
+          example: J.K. Rowling
+          type: string
+        style: form
+      - description: Only the book matching the ISBN-13 will be returned
+        explode: false
+        in: query
+        name: isbn
+        required: false
+        schema:
+          example: "9781781257654"
+          type: string
+        style: form
+      - description: Only the book matching the OCLC will be returned
+        explode: false
+        in: query
+        name: oclc
+        required: false
+        schema:
+          example: "864418200"
+          type: string
+        style: form
+      - description: The sorting criteria (publish-date or rating).
+        explode: false
+        in: query
+        name: sort
+        required: false
+        schema:
+          example: rating
+          type: string
+        style: form
+      - description: Whether to sort ascending or descending (ASC or DESC).
+        explode: false
+        in: query
+        name: sort-direction
+        required: false
+        schema:
+          example: DESC
+          type: string
+        style: form
+      - description: The number of books to skip in range [0,1000]
+        explode: false
+        in: query
+        name: offset
+        required: false
+        schema:
+          example: 0
+          type: number
+        style: form
+      - description: The number of books to return in range [1,100]
+        explode: false
+        in: query
+        name: number
+        required: false
+        schema:
+          example: 10
+          type: number
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              examples:
+                Response:
+                  value:
+                    available: 5999
+                    number: 10
+                    offset: 0
+                    books:
+                    - title: Journey to Hogwarts
+                      image: https://covers.openlibrary.org/b/id/2520429-M.jpg
+                      id: 17200576
+                    - image: https://covers.openlibrary.org/b/id/2520430-M.jpg
+                      id: 15954006
+                      title: Inside Hogwarts
+                      subtitle: Magical Paintbook
+                    - title: Harry Potter and the Goblet of Fire
+                      image: https://covers.openlibrary.org/b/id/12775900-M.jpg
+                      id: 16384516
+                    - title: Harry Potter and the Order of the Phoenix
+                      image: https://covers.openlibrary.org/b/id/11416565-M.jpg
+                      id: 14296534
+                    - title: Great Gatsby (Silver Screen Edition)
+                      image: https://covers.openlibrary.org/b/id/12791857-M.jpg
+                      id: 14530450
+                    - image: https://covers.openlibrary.org/b/id/394001-M.jpg
+                      id: 18810398
+                      title: The Hobbit
+                      subtitle: or, There and back again
+                    - image: https://covers.openlibrary.org/b/id/6282709-M.jpg
+                      id: 13597674
+                      title: The Name of the Wind
+                      subtitle: 'The Kingkiller Chronicle : day one'
+                    - image: https://covers.openlibrary.org/b/id/13220226-M.jpg
+                      id: 20778556
+                      title: 'Two Towers : The Lord of the Rings'
+                      subtitle: Part Two
+                    - title: Frankenstein (Silver Screen Edition)
+                      image: https://covers.openlibrary.org/b/id/12791860-M.jpg
+                      id: 20101114
+                    - title: Bogar bárd meséi
+                      image: https://covers.openlibrary.org/b/id/9326689-M.jpg
+                      id: 17798828
+              schema:
+                type: object
+          description: Success
+        "401":
+          description: Unauthorized
+        "402":
+          description: Payment Required
+        "403":
+          description: Forbidden
+        "404":
+          description: Not Found
+        "429":
+          description: Too Many Requests
+      summary: Search Books
+      x-accepts: application/json
+  /{id}:
+    get:
+      deprecated: false
+      description: ' Get all information about a certain book. '
+      externalDocs:
+        description: Read entire docs
+        url: https://bigbookapi.com/docs#Get-Book-Information
+      operationId: getBookInformation
+      parameters:
+      - description: The id of the book.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          example: 15912250
+          type: number
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              examples:
+                Response:
+                  value:
+                    id: 16384516
+                    title: Harry Potter and the Goblet of Fire
+                    image: https://covers.openlibrary.org/b/id/12775900-M.jpg
+                    identifiers:
+                      open_library_id: OL82577W
+                      isbn_10: "0439139597"
+                      isbn_13: "0439139597"
+                    authors:
+                    - name: J. K. Rowling
+                      id: 14136020
+                    publish_date: 2000
+                    number_of_pages: 734
+                    description: "Celebrate 20 years of Harry Potter magic! \r\n\r\
+                      \nThe Triwizard Tournament is to be held at Hogwarts. Only wizards\
+                      \ who are over seventeen are allowed to enter – but that doesn't\
+                      \ stop Harry dreaming that he will win the competition. Then\
+                      \ at Hallowe'en, when the Goblet of Fire makes its selection,\
+                      \ Harry is amazed to find his name is one of those that the\
+                      \ magical cup picks out. He will face death-defying tasks, dragons\
+                      \ and Dark wizards, but with the help of his best friends, Ron\
+                      \ and Hermione, he might just make it through – alive!\r\n\r\
+                      \nThese new editions of the classic and internationally bestselling,\
+                      \ multi-award-winning series feature instantly pick-up-able\
+                      \ new jackets by Jonny Duddle, with huge child appeal, to bring\
+                      \ Harry Potter to the next generation of readers. It's time\
+                      \ to PASS THE MAGIC ON"
+                    rating:
+                      average: 0.912
+              schema:
+                type: object
+          description: Success
+        "401":
+          description: Unauthorized
+        "402":
+          description: Payment Required
+        "403":
+          description: Forbidden
+        "404":
+          description: Not Found
+        "429":
+          description: Too Many Requests
+      summary: Get Book Information
+      x-accepts: application/json
+  /{id}/similar:
+    get:
+      deprecated: false
+      description: ' Find books that are similar to the given book. '
+      externalDocs:
+        description: Read entire docs
+        url: https://bigbookapi.com/docs#Find-Similar-Books
+      operationId: findSimilarBooks
+      parameters:
+      - description: The id of the book to which similar books should be found.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          example: 8302059
+          type: number
+        style: simple
+      - description: The number of similar books to return in range [1,100]
+        explode: false
+        in: query
+        name: number
+        required: false
+        schema:
+          example: 10
+          type: number
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              examples:
+                Response:
+                  value:
+                    similar_books:
+                    - title: Harry Potter and the Order of the Phoenix
+                      image: https://covers.openlibrary.org/b/id/11416565-M.jpg
+                      id: 14296534
+                    - title: Harry Potter and the Half-Blood Prince
+                      image: https://covers.openlibrary.org/b/id/8235163-M.jpg
+                      id: 16499448
+                    - title: Blood and Fire
+                      image: https://covers.openlibrary.org/b/id/10404497-M.jpg
+                      id: 18610968
+                    - image: https://covers.openlibrary.org/b/id/6657713-M.jpg
+                      id: 20464852
+                      title: Towers of midnight
+                      subtitle: Wheel of Time Book 13
+                    - image: https://covers.openlibrary.org/b/id/3027823-M.jpg
+                      id: 13804028
+                      title: Best of Robert Jordan
+                      subtitle: The Shadow Rising; The Fires of Heaven; Lord of Chaos;
+                        A Crown of Swords (The Wheel of Time Series)
+                    - title: MAR, Volume 7
+                      image: https://covers.openlibrary.org/b/id/765103-M.jpg
+                      id: 14987824
+                    - title: The Daysong of the Knightbird
+                      image: https://covers.openlibrary.org/b/id/1822804-M.jpg
+                      id: 19984854
+                    - title: The key
+                      image: https://covers.openlibrary.org/b/id/8369732-M.jpg
+                      id: 17174416
+                    - title: Bring me the head of Prince Charming
+                      image: https://covers.openlibrary.org/b/id/3965371-M.jpg
+                      id: 20121054
+              schema:
+                type: object
+          description: Success
+        "401":
+          description: Unauthorized
+        "402":
+          description: Payment Required
+        "403":
+          description: Forbidden
+        "404":
+          description: Not Found
+        "429":
+          description: Too Many Requests
+      summary: Find Similar Books
+      x-accepts: application/json
+  /search-authors:
+    get:
+      deprecated: false
+      description: ' Search for book authors by name or partial name. The response
+        contains the author''s name and their id. You can then use the id in the book
+        search. '
+      externalDocs:
+        description: Read entire docs
+        url: https://bigbookapi.com/docs#Search-Authors
+      operationId: searchAuthors
+      parameters:
+      - description: The (partial/beginning) name of the author.
+        explode: false
+        in: query
+        name: name
+        required: false
+        schema:
+          example: Morgan Housel
+          type: string
+        style: form
+      - description: The number of authors to skip in range [0,100]
+        explode: false
+        in: query
+        name: offset
+        required: false
+        schema:
+          example: 0
+          type: number
+        style: form
+      - description: The number of authors to return in range [1,100]
+        explode: false
+        in: query
+        name: number
+        required: false
+        schema:
+          example: 10
+          type: number
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              examples:
+                Response:
+                  value:
+                    authors:
+                    - name: Morgan Horton Seacord
+                      id: 18826554
+                    - name: Morgan Housel
+                      id: 17858271
+                    - name: Morgan Howell
+                      id: 13486775
+              schema:
+                type: object
+          description: Success
+        "401":
+          description: Unauthorized
+        "402":
+          description: Payment Required
+        "403":
+          description: Forbidden
+        "404":
+          description: Not Found
+        "429":
+          description: Too Many Requests
+      summary: Search Authors
+      x-accepts: application/json
+components:
+  schemas: {}
+  securitySchemes:
+    apiKey:
+      in: query
+      name: api-key
+      type: apiKey
+    headerApiKey:
+      in: header
+      name: x-api-key
+      type: apiKey
+

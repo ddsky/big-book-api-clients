@@ -1,0 +1,10 @@
+.gitignore
+.openapi-generator-ignore
+README.md
+config/config.exs
+lib/com/bigbookapi/client/api/default.ex
+lib/com/bigbookapi/client/connection.ex
+lib/com/bigbookapi/client/deserializer.ex
+lib/com/bigbookapi/client/request_builder.ex
+mix.exs
+test/test_helper.exs

@@ -1,0 +1,605 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Big Book API",
+    "description": "The world's book wrapped into a single API.",
+    "termsOfService": "https://bigbookapi.com/terms",
+    "version": "1.0",
+    "contact": {
+      "name": "David Urbansky",
+      "email": "mail@bigbookapi.com"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://api.bigbookapi.com"
+    }
+  ],
+  "paths": {
+    "/search-books": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "Success",
+            "headers": {},
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                },
+                "examples": {
+                  "Response": {
+                    "value": {
+                      "available": 5999,
+                      "number": 10,
+                      "offset": 0,
+                      "books": [
+                        {
+                          "title": "Journey to Hogwarts",
+                          "image": "https://covers.openlibrary.org/b/id/2520429-M.jpg",
+                          "id": 17200576
+                        },
+                        {
+                          "image": "https://covers.openlibrary.org/b/id/2520430-M.jpg",
+                          "id": 15954006,
+                          "title": "Inside Hogwarts",
+                          "subtitle": "Magical Paintbook"
+                        },
+                        {
+                          "title": "Harry Potter and the Goblet of Fire",
+                          "image": "https://covers.openlibrary.org/b/id/12775900-M.jpg",
+                          "id": 16384516
+                        },
+                        {
+                          "title": "Harry Potter and the Order of the Phoenix",
+                          "image": "https://covers.openlibrary.org/b/id/11416565-M.jpg",
+                          "id": 14296534
+                        },
+                        {
+                          "title": "Great Gatsby (Silver Screen Edition)",
+                          "image": "https://covers.openlibrary.org/b/id/12791857-M.jpg",
+                          "id": 14530450
+                        },
+                        {
+                          "image": "https://covers.openlibrary.org/b/id/394001-M.jpg",
+                          "id": 18810398,
+                          "title": "The Hobbit",
+                          "subtitle": "or, There and back again"
+                        },
+                        {
+                          "image": "https://covers.openlibrary.org/b/id/6282709-M.jpg",
+                          "id": 13597674,
+                          "title": "The Name of the Wind",
+                          "subtitle": "The Kingkiller Chronicle : day one"
+                        },
+                        {
+                          "image": "https://covers.openlibrary.org/b/id/13220226-M.jpg",
+                          "id": 20778556,
+                          "title": "Two Towers : The Lord of the Rings",
+                          "subtitle": "Part Two"
+                        },
+                        {
+                          "title": "Frankenstein (Silver Screen Edition)",
+                          "image": "https://covers.openlibrary.org/b/id/12791860-M.jpg",
+                          "id": 20101114
+                        },
+                        {
+                          "title": "Bogar b\u00e1rd mes\u00e9i",
+                          "image": "https://covers.openlibrary.org/b/id/9326689-M.jpg",
+                          "id": 17798828
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "402": {
+            "description": "Payment Required"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "429": {
+            "description": "Too Many Requests"
+          }
+        },
+        "parameters": [
+          {
+            "name": "query",
+            "description": "The search query.",
+            "schema": {
+              "type": "string",
+              "example": "books about wizards"
+            },
+            "required": false,
+            "style": "form",
+            "explode": false,
+            "in": "query"
+          },
+          {
+            "name": "earliest-publish-year",
+            "description": "The books must have been published after this year.",
+            "schema": {
+              "type": "number",
+              "example": 2022
+            },
+            "required": false,
+            "style": "form",
+            "explode": false,
+            "in": "query"
+          },
+          {
+            "name": "latest-publish-year",
+            "description": "The books must have been published before this year.",
+            "schema": {
+              "type": "number",
+              "example": 2023
+            },
+            "required": false,
+            "style": "form",
+            "explode": false,
+            "in": "query"
+          },
+          {
+            "name": "min-rating",
+            "description": "The minimum rating the book must have gotten in the interval [0,1].",
+            "schema": {
+              "type": "number",
+              "example": 0.8
+            },
+            "required": false,
+            "style": "form",
+            "explode": false,
+            "in": "query"
+          },
+          {
+            "name": "max-rating",
+            "description": "The maximum rating the book must have gotten in the interval [0,1].",
+            "schema": {
+              "type": "number",
+              "example": 0.99
+            },
+            "required": false,
+            "style": "form",
+            "explode": false,
+            "in": "query"
+          },
+          {
+            "name": "genres",
+            "description": "A comma-separated list of  genres. Only books from any of the given genres will be returned.",
+            "schema": {
+              "type": "string",
+              "example": "nonfiction"
+            },
+            "required": false,
+            "style": "form",
+            "explode": false,
+            "in": "query"
+          },
+          {
+            "name": "authors",
+            "description": "A comma-separated list of author ids or names. Only books from any of the given authors will be returned. You can retrieve author ids from the search authors endpoint. Pass author names is slower and if two authors have the same name you can't disambiguate.",
+            "schema": {
+              "type": "string",
+              "example": "J.K. Rowling"
+            },
+            "required": false,
+            "style": "form",
+            "explode": false,
+            "in": "query"
+          },
+          {
+            "name": "isbn",
+            "description": "Only the book matching the ISBN-13 will be returned",
+            "schema": {
+              "type": "string",
+              "example": "9781781257654"
+            },
+            "required": false,
+            "style": "form",
+            "explode": false,
+            "in": "query"
+          },
+          {
+            "name": "oclc",
+            "description": "Only the book matching the OCLC will be returned",
+            "schema": {
+              "type": "string",
+              "example": "864418200"
+            },
+            "required": false,
+            "style": "form",
+            "explode": false,
+            "in": "query"
+          },
+          {
+            "name": "sort",
+            "description": "The sorting criteria (publish-date or rating).",
+            "schema": {
+              "type": "string",
+              "example": "rating"
+            },
+            "required": false,
+            "style": "form",
+            "explode": false,
+            "in": "query"
+          },
+          {
+            "name": "sort-direction",
+            "description": "Whether to sort ascending or descending (ASC or DESC).",
+            "schema": {
+              "type": "string",
+              "example": "DESC"
+            },
+            "required": false,
+            "style": "form",
+            "explode": false,
+            "in": "query"
+          },
+          {
+            "name": "offset",
+            "description": "The number of books to skip in range [0,1000]",
+            "schema": {
+              "type": "number",
+              "example": 0
+            },
+            "required": false,
+            "style": "form",
+            "explode": false,
+            "in": "query"
+          },
+          {
+            "name": "number",
+            "description": "The number of books to return in range [1,100]",
+            "schema": {
+              "type": "number",
+              "example": 10
+            },
+            "required": false,
+            "style": "form",
+            "explode": false,
+            "in": "query"
+          }
+        ],
+        "externalDocs": {
+          "description": "Read entire docs",
+          "url": "https://bigbookapi.com/docs#Search-Books"
+        },
+        "summary": "Search Books",
+        "description": " Search and filter books based on matching a query, the ISBN, rating, and more fields. The query is semantically parsed using our own large ontology. That means you can search for \"books about dogs\" and will automatically also find books about \"border collies\" and other types without specifying them in the query. ",
+        "operationId": "searchBooks",
+        "deprecated": false
+      }
+    },
+    "/{id}": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "Success",
+            "headers": {},
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                },
+                "examples": {
+                  "Response": {
+                    "value": {
+                      "id": 16384516,
+                      "title": "Harry Potter and the Goblet of Fire",
+                      "image": "https://covers.openlibrary.org/b/id/12775900-M.jpg",
+                      "identifiers": {
+                        "open_library_id": "OL82577W",
+                        "isbn_10": "0439139597",
+                        "isbn_13": "0439139597"
+                      },
+                      "authors": [
+                        {
+                          "name": "J. K. Rowling",
+                          "id": 14136020
+                        }
+                      ],
+                      "publish_date": 2000,
+                      "number_of_pages": 734,
+                      "description": "Celebrate 20 years of Harry Potter magic! \r\n\r\nThe Triwizard Tournament is to be held at Hogwarts. Only wizards who are over seventeen are allowed to enter \u2013 but that doesn't stop Harry dreaming that he will win the competition. Then at Hallowe'en, when the Goblet of Fire makes its selection, Harry is amazed to find his name is one of those that the magical cup picks out. He will face death-defying tasks, dragons and Dark wizards, but with the help of his best friends, Ron and Hermione, he might just make it through \u2013 alive!\r\n\r\nThese new editions of the classic and internationally bestselling, multi-award-winning series feature instantly pick-up-able new jackets by Jonny Duddle, with huge child appeal, to bring Harry Potter to the next generation of readers. It's time to PASS THE MAGIC ON",
+                      "rating": {
+                        "average": 0.912
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "402": {
+            "description": "Payment Required"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "429": {
+            "description": "Too Many Requests"
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "description": "The id of the book.",
+            "schema": {
+              "type": "number",
+              "example": 15912250
+            },
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "in": "path"
+          }
+        ],
+        "externalDocs": {
+          "description": "Read entire docs",
+          "url": "https://bigbookapi.com/docs#Get-Book-Information"
+        },
+        "summary": "Get Book Information",
+        "description": " Get all information about a certain book. ",
+        "operationId": "getBookInformation",
+        "deprecated": false
+      }
+    },
+    "/{id}/similar": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "Success",
+            "headers": {},
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                },
+                "examples": {
+                  "Response": {
+                    "value": {
+                      "similar_books": [
+                        {
+                          "title": "Harry Potter and the Order of the Phoenix",
+                          "image": "https://covers.openlibrary.org/b/id/11416565-M.jpg",
+                          "id": 14296534
+                        },
+                        {
+                          "title": "Harry Potter and the Half-Blood Prince",
+                          "image": "https://covers.openlibrary.org/b/id/8235163-M.jpg",
+                          "id": 16499448
+                        },
+                        {
+                          "title": "Blood and Fire",
+                          "image": "https://covers.openlibrary.org/b/id/10404497-M.jpg",
+                          "id": 18610968
+                        },
+                        {
+                          "image": "https://covers.openlibrary.org/b/id/6657713-M.jpg",
+                          "id": 20464852,
+                          "title": "Towers of midnight",
+                          "subtitle": "Wheel of Time Book 13"
+                        },
+                        {
+                          "image": "https://covers.openlibrary.org/b/id/3027823-M.jpg",
+                          "id": 13804028,
+                          "title": "Best of Robert Jordan",
+                          "subtitle": "The Shadow Rising; The Fires of Heaven; Lord of Chaos; A Crown of Swords (The Wheel of Time Series)"
+                        },
+                        {
+                          "title": "MAR, Volume 7",
+                          "image": "https://covers.openlibrary.org/b/id/765103-M.jpg",
+                          "id": 14987824
+                        },
+                        {
+                          "title": "The Daysong of the Knightbird",
+                          "image": "https://covers.openlibrary.org/b/id/1822804-M.jpg",
+                          "id": 19984854
+                        },
+                        {
+                          "title": "The key",
+                          "image": "https://covers.openlibrary.org/b/id/8369732-M.jpg",
+                          "id": 17174416
+                        },
+                        {
+                          "title": "Bring me the head of Prince Charming",
+                          "image": "https://covers.openlibrary.org/b/id/3965371-M.jpg",
+                          "id": 20121054
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "402": {
+            "description": "Payment Required"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "429": {
+            "description": "Too Many Requests"
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "description": "The id of the book to which similar books should be found.",
+            "schema": {
+              "type": "number",
+              "example": 8302059
+            },
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "in": "path"
+          },
+          {
+            "name": "number",
+            "description": "The number of similar books to return in range [1,100]",
+            "schema": {
+              "type": "number",
+              "example": 10
+            },
+            "required": false,
+            "style": "form",
+            "explode": false,
+            "in": "query"
+          }
+        ],
+        "externalDocs": {
+          "description": "Read entire docs",
+          "url": "https://bigbookapi.com/docs#Find-Similar-Books"
+        },
+        "summary": "Find Similar Books",
+        "description": " Find books that are similar to the given book. ",
+        "operationId": "findSimilarBooks",
+        "deprecated": false
+      }
+    },
+    "/search-authors": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "Success",
+            "headers": {},
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                },
+                "examples": {
+                  "Response": {
+                    "value": {
+                      "authors": [
+                        {
+                          "name": "Morgan Horton Seacord",
+                          "id": 18826554
+                        },
+                        {
+                          "name": "Morgan Housel",
+                          "id": 17858271
+                        },
+                        {
+                          "name": "Morgan Howell",
+                          "id": 13486775
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "402": {
+            "description": "Payment Required"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "429": {
+            "description": "Too Many Requests"
+          }
+        },
+        "parameters": [
+          {
+            "name": "name",
+            "description": "The (partial/beginning) name of the author.",
+            "schema": {
+              "type": "string",
+              "example": "Morgan Housel"
+            },
+            "required": false,
+            "style": "form",
+            "explode": false,
+            "in": "query"
+          },
+          {
+            "name": "offset",
+            "description": "The number of authors to skip in range [0,100]",
+            "schema": {
+              "type": "number",
+              "example": 0
+            },
+            "required": false,
+            "style": "form",
+            "explode": false,
+            "in": "query"
+          },
+          {
+            "name": "number",
+            "description": "The number of authors to return in range [1,100]",
+            "schema": {
+              "type": "number",
+              "example": 10
+            },
+            "required": false,
+            "style": "form",
+            "explode": false,
+            "in": "query"
+          }
+        ],
+        "externalDocs": {
+          "description": "Read entire docs",
+          "url": "https://bigbookapi.com/docs#Search-Authors"
+        },
+        "summary": "Search Authors",
+        "description": " Search for book authors by name or partial name. The response contains the author's name and their id. You can then use the id in the book search. ",
+        "operationId": "searchAuthors",
+        "deprecated": false
+      }
+    }
+  },
+  "components": {
+    "schemas": {},
+    "securitySchemes": {
+      "apiKey": {
+        "name": "api-key",
+        "type": "apiKey",
+        "in": "query"
+      },
+      "headerApiKey": {
+        "name": "x-api-key",
+        "type": "apiKey",
+        "in": "header"
+      }
+    }
+  },
+  "security": [
+    {
+      "apiKey": []
+    },
+    {
+      "headerApiKey": []
+    }
+  ]
+}

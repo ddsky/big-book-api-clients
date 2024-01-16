@@ -1,0 +1,10 @@
+.gitignore
+.openapi-generator-ignore
+README.md
+compile-mono.sh
+docs/DefaultApi.md
+src/main/CsharpDotNet2/Org/OpenAPITools/Api/DefaultApi.cs
+src/main/CsharpDotNet2/Org/OpenAPITools/Client/ApiClient.cs
+src/main/CsharpDotNet2/Org/OpenAPITools/Client/ApiException.cs
+src/main/CsharpDotNet2/Org/OpenAPITools/Client/Configuration.cs
+vendor/packages.config

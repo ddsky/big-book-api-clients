@@ -1,0 +1,13 @@
+.babelrc
+.gitignore
+.openapi-generator-ignore
+.travis.yml
+README.md
+docs/DefaultApi.md
+git_push.sh
+mocha.opts
+package.json
+src/com.bigbookapi.client/ApiClient.js
+src/com.bigbookapi.client/com.bigbookapi/DefaultApi.js
+src/com.bigbookapi.client/index.js
+test/com.bigbookapi.client/api/DefaultApi.spec.js
