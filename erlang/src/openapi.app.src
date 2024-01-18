@@ -1,5 +1,5 @@
 {application, openapi,
- [{description, "The world&#39;s book wrapped into a single API."},
+ [{description, "Big Book API lets you semantically search over 4 million English books by text, genre, author, ISBN, and more. You can also find books that are similar to each other."},
   {vsn, "0.1.0"},
   {registered, []},
   {applications,

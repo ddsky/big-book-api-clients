@@ -1,7 +1,7 @@
 /**
  * Big Book API
  *
- * The world's book wrapped into a single API.
+ * Big Book API lets you semantically search over 4 million English books by text, genre, author, ISBN, and more. You can also find books that are similar to each other.
  *
  * The version of the OpenAPI document: 1.0
  * Contact: mail@bigbookapi.com
@@ -295,6 +295,7 @@ class DefaultApi(basePath: kotlin.String = defaultBasePath) : ApiClient(basePath
     * @param oclc Only the book matching the OCLC will be returned (optional)
     * @param sort The sorting criteria (publish-date or rating). (optional)
     * @param sortDirection Whether to sort ascending or descending (ASC or DESC). (optional)
+    * @param groupResults Whether to group similar editions of the same book. (optional)
     * @param offset The number of books to skip in range [0,1000] (optional)
     * @param number The number of books to return in range [1,100] (optional)
     * @return kotlin.Any
@@ -306,8 +307,8 @@ class DefaultApi(basePath: kotlin.String = defaultBasePath) : ApiClient(basePath
     */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun searchBooks(query: kotlin.String?, earliestPublishYear: java.math.BigDecimal?, latestPublishYear: java.math.BigDecimal?, minRating: java.math.BigDecimal?, maxRating: java.math.BigDecimal?, genres: kotlin.String?, authors: kotlin.String?, isbn: kotlin.String?, oclc: kotlin.String?, sort: kotlin.String?, sortDirection: kotlin.String?, offset: java.math.BigDecimal?, number: java.math.BigDecimal?) : kotlin.Any {
-        val localVarResponse = searchBooksWithHttpInfo(query = query, earliestPublishYear = earliestPublishYear, latestPublishYear = latestPublishYear, minRating = minRating, maxRating = maxRating, genres = genres, authors = authors, isbn = isbn, oclc = oclc, sort = sort, sortDirection = sortDirection, offset = offset, number = number)
+    fun searchBooks(query: kotlin.String?, earliestPublishYear: java.math.BigDecimal?, latestPublishYear: java.math.BigDecimal?, minRating: java.math.BigDecimal?, maxRating: java.math.BigDecimal?, genres: kotlin.String?, authors: kotlin.String?, isbn: kotlin.String?, oclc: kotlin.String?, sort: kotlin.String?, sortDirection: kotlin.String?, groupResults: kotlin.Boolean?, offset: java.math.BigDecimal?, number: java.math.BigDecimal?) : kotlin.Any {
+        val localVarResponse = searchBooksWithHttpInfo(query = query, earliestPublishYear = earliestPublishYear, latestPublishYear = latestPublishYear, minRating = minRating, maxRating = maxRating, genres = genres, authors = authors, isbn = isbn, oclc = oclc, sort = sort, sortDirection = sortDirection, groupResults = groupResults, offset = offset, number = number)
 
         return when (localVarResponse.responseType) {
             ResponseType.Success -> (localVarResponse as Success<*>).data as kotlin.Any
@@ -338,6 +339,7 @@ class DefaultApi(basePath: kotlin.String = defaultBasePath) : ApiClient(basePath
     * @param oclc Only the book matching the OCLC will be returned (optional)
     * @param sort The sorting criteria (publish-date or rating). (optional)
     * @param sortDirection Whether to sort ascending or descending (ASC or DESC). (optional)
+    * @param groupResults Whether to group similar editions of the same book. (optional)
     * @param offset The number of books to skip in range [0,1000] (optional)
     * @param number The number of books to return in range [1,100] (optional)
     * @return ApiResponse<kotlin.Any?>
@@ -346,8 +348,8 @@ class DefaultApi(basePath: kotlin.String = defaultBasePath) : ApiClient(basePath
     */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun searchBooksWithHttpInfo(query: kotlin.String?, earliestPublishYear: java.math.BigDecimal?, latestPublishYear: java.math.BigDecimal?, minRating: java.math.BigDecimal?, maxRating: java.math.BigDecimal?, genres: kotlin.String?, authors: kotlin.String?, isbn: kotlin.String?, oclc: kotlin.String?, sort: kotlin.String?, sortDirection: kotlin.String?, offset: java.math.BigDecimal?, number: java.math.BigDecimal?) : ApiResponse<kotlin.Any?> {
-        val localVariableConfig = searchBooksRequestConfig(query = query, earliestPublishYear = earliestPublishYear, latestPublishYear = latestPublishYear, minRating = minRating, maxRating = maxRating, genres = genres, authors = authors, isbn = isbn, oclc = oclc, sort = sort, sortDirection = sortDirection, offset = offset, number = number)
+    fun searchBooksWithHttpInfo(query: kotlin.String?, earliestPublishYear: java.math.BigDecimal?, latestPublishYear: java.math.BigDecimal?, minRating: java.math.BigDecimal?, maxRating: java.math.BigDecimal?, genres: kotlin.String?, authors: kotlin.String?, isbn: kotlin.String?, oclc: kotlin.String?, sort: kotlin.String?, sortDirection: kotlin.String?, groupResults: kotlin.Boolean?, offset: java.math.BigDecimal?, number: java.math.BigDecimal?) : ApiResponse<kotlin.Any?> {
+        val localVariableConfig = searchBooksRequestConfig(query = query, earliestPublishYear = earliestPublishYear, latestPublishYear = latestPublishYear, minRating = minRating, maxRating = maxRating, genres = genres, authors = authors, isbn = isbn, oclc = oclc, sort = sort, sortDirection = sortDirection, groupResults = groupResults, offset = offset, number = number)
 
         return request<Unit, kotlin.Any>(
             localVariableConfig
@@ -368,11 +370,12 @@ class DefaultApi(basePath: kotlin.String = defaultBasePath) : ApiClient(basePath
     * @param oclc Only the book matching the OCLC will be returned (optional)
     * @param sort The sorting criteria (publish-date or rating). (optional)
     * @param sortDirection Whether to sort ascending or descending (ASC or DESC). (optional)
+    * @param groupResults Whether to group similar editions of the same book. (optional)
     * @param offset The number of books to skip in range [0,1000] (optional)
     * @param number The number of books to return in range [1,100] (optional)
     * @return RequestConfig
     */
-    fun searchBooksRequestConfig(query: kotlin.String?, earliestPublishYear: java.math.BigDecimal?, latestPublishYear: java.math.BigDecimal?, minRating: java.math.BigDecimal?, maxRating: java.math.BigDecimal?, genres: kotlin.String?, authors: kotlin.String?, isbn: kotlin.String?, oclc: kotlin.String?, sort: kotlin.String?, sortDirection: kotlin.String?, offset: java.math.BigDecimal?, number: java.math.BigDecimal?) : RequestConfig<Unit> {
+    fun searchBooksRequestConfig(query: kotlin.String?, earliestPublishYear: java.math.BigDecimal?, latestPublishYear: java.math.BigDecimal?, minRating: java.math.BigDecimal?, maxRating: java.math.BigDecimal?, genres: kotlin.String?, authors: kotlin.String?, isbn: kotlin.String?, oclc: kotlin.String?, sort: kotlin.String?, sortDirection: kotlin.String?, groupResults: kotlin.Boolean?, offset: java.math.BigDecimal?, number: java.math.BigDecimal?) : RequestConfig<Unit> {
         val localVariableBody = null
         val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>()
             .apply {
@@ -408,6 +411,9 @@ class DefaultApi(basePath: kotlin.String = defaultBasePath) : ApiClient(basePath
                 }
                 if (sortDirection != null) {
                     put("sort-direction", listOf(sortDirection.toString()))
+                }
+                if (groupResults != null) {
+                    put("group-results", listOf(groupResults.toString()))
                 }
                 if (offset != null) {
                     put("offset", listOf(offset.toString()))

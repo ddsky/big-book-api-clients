@@ -12,7 +12,7 @@
 /**
  * Big Book API
  *
- * The world's book wrapped into a single API.
+ * Big Book API lets you semantically search over 4 million English books by text, genre, author, ISBN, and more. You can also find books that are similar to each other.
  *
  * The version of the OpenAPI document: 1.0
  * Contact: mail@bigbookapi.com
@@ -1004,6 +1004,7 @@ class DefaultApi
      * @param  string $oclc Only the book matching the OCLC will be returned (optional)
      * @param  string $sort The sorting criteria (publish-date or rating). (optional)
      * @param  string $sort_direction Whether to sort ascending or descending (ASC or DESC). (optional)
+     * @param  bool $group_results Whether to group similar editions of the same book. (optional)
      * @param  float $offset The number of books to skip in range [0,1000] (optional)
      * @param  float $number The number of books to return in range [1,100] (optional)
      *
@@ -1011,9 +1012,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return object
      */
-    public function searchBooks($query = null, $earliest_publish_year = null, $latest_publish_year = null, $min_rating = null, $max_rating = null, $genres = null, $authors = null, $isbn = null, $oclc = null, $sort = null, $sort_direction = null, $offset = null, $number = null)
+    public function searchBooks($query = null, $earliest_publish_year = null, $latest_publish_year = null, $min_rating = null, $max_rating = null, $genres = null, $authors = null, $isbn = null, $oclc = null, $sort = null, $sort_direction = null, $group_results = null, $offset = null, $number = null)
     {
-        list($response) = $this->searchBooksWithHttpInfo($query, $earliest_publish_year, $latest_publish_year, $min_rating, $max_rating, $genres, $authors, $isbn, $oclc, $sort, $sort_direction, $offset, $number);
+        list($response) = $this->searchBooksWithHttpInfo($query, $earliest_publish_year, $latest_publish_year, $min_rating, $max_rating, $genres, $authors, $isbn, $oclc, $sort, $sort_direction, $group_results, $offset, $number);
         return $response;
     }
 
@@ -1033,6 +1034,7 @@ class DefaultApi
      * @param  string $oclc Only the book matching the OCLC will be returned (optional)
      * @param  string $sort The sorting criteria (publish-date or rating). (optional)
      * @param  string $sort_direction Whether to sort ascending or descending (ASC or DESC). (optional)
+     * @param  bool $group_results Whether to group similar editions of the same book. (optional)
      * @param  float $offset The number of books to skip in range [0,1000] (optional)
      * @param  float $number The number of books to return in range [1,100] (optional)
      *
@@ -1040,9 +1042,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return array of object, HTTP status code, HTTP response headers (array of strings)
      */
-    public function searchBooksWithHttpInfo($query = null, $earliest_publish_year = null, $latest_publish_year = null, $min_rating = null, $max_rating = null, $genres = null, $authors = null, $isbn = null, $oclc = null, $sort = null, $sort_direction = null, $offset = null, $number = null)
+    public function searchBooksWithHttpInfo($query = null, $earliest_publish_year = null, $latest_publish_year = null, $min_rating = null, $max_rating = null, $genres = null, $authors = null, $isbn = null, $oclc = null, $sort = null, $sort_direction = null, $group_results = null, $offset = null, $number = null)
     {
-        $request = $this->searchBooksRequest($query, $earliest_publish_year, $latest_publish_year, $min_rating, $max_rating, $genres, $authors, $isbn, $oclc, $sort, $sort_direction, $offset, $number);
+        $request = $this->searchBooksRequest($query, $earliest_publish_year, $latest_publish_year, $min_rating, $max_rating, $genres, $authors, $isbn, $oclc, $sort, $sort_direction, $group_results, $offset, $number);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1138,15 +1140,16 @@ class DefaultApi
      * @param  string $oclc Only the book matching the OCLC will be returned (optional)
      * @param  string $sort The sorting criteria (publish-date or rating). (optional)
      * @param  string $sort_direction Whether to sort ascending or descending (ASC or DESC). (optional)
+     * @param  bool $group_results Whether to group similar editions of the same book. (optional)
      * @param  float $offset The number of books to skip in range [0,1000] (optional)
      * @param  float $number The number of books to return in range [1,100] (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function searchBooksAsync($query = null, $earliest_publish_year = null, $latest_publish_year = null, $min_rating = null, $max_rating = null, $genres = null, $authors = null, $isbn = null, $oclc = null, $sort = null, $sort_direction = null, $offset = null, $number = null)
+    public function searchBooksAsync($query = null, $earliest_publish_year = null, $latest_publish_year = null, $min_rating = null, $max_rating = null, $genres = null, $authors = null, $isbn = null, $oclc = null, $sort = null, $sort_direction = null, $group_results = null, $offset = null, $number = null)
     {
-        return $this->searchBooksAsyncWithHttpInfo($query, $earliest_publish_year, $latest_publish_year, $min_rating, $max_rating, $genres, $authors, $isbn, $oclc, $sort, $sort_direction, $offset, $number)
+        return $this->searchBooksAsyncWithHttpInfo($query, $earliest_publish_year, $latest_publish_year, $min_rating, $max_rating, $genres, $authors, $isbn, $oclc, $sort, $sort_direction, $group_results, $offset, $number)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1170,16 +1173,17 @@ class DefaultApi
      * @param  string $oclc Only the book matching the OCLC will be returned (optional)
      * @param  string $sort The sorting criteria (publish-date or rating). (optional)
      * @param  string $sort_direction Whether to sort ascending or descending (ASC or DESC). (optional)
+     * @param  bool $group_results Whether to group similar editions of the same book. (optional)
      * @param  float $offset The number of books to skip in range [0,1000] (optional)
      * @param  float $number The number of books to return in range [1,100] (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function searchBooksAsyncWithHttpInfo($query = null, $earliest_publish_year = null, $latest_publish_year = null, $min_rating = null, $max_rating = null, $genres = null, $authors = null, $isbn = null, $oclc = null, $sort = null, $sort_direction = null, $offset = null, $number = null)
+    public function searchBooksAsyncWithHttpInfo($query = null, $earliest_publish_year = null, $latest_publish_year = null, $min_rating = null, $max_rating = null, $genres = null, $authors = null, $isbn = null, $oclc = null, $sort = null, $sort_direction = null, $group_results = null, $offset = null, $number = null)
     {
         $returnType = 'object';
-        $request = $this->searchBooksRequest($query, $earliest_publish_year, $latest_publish_year, $min_rating, $max_rating, $genres, $authors, $isbn, $oclc, $sort, $sort_direction, $offset, $number);
+        $request = $this->searchBooksRequest($query, $earliest_publish_year, $latest_publish_year, $min_rating, $max_rating, $genres, $authors, $isbn, $oclc, $sort, $sort_direction, $group_results, $offset, $number);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1228,13 +1232,14 @@ class DefaultApi
      * @param  string $oclc Only the book matching the OCLC will be returned (optional)
      * @param  string $sort The sorting criteria (publish-date or rating). (optional)
      * @param  string $sort_direction Whether to sort ascending or descending (ASC or DESC). (optional)
+     * @param  bool $group_results Whether to group similar editions of the same book. (optional)
      * @param  float $offset The number of books to skip in range [0,1000] (optional)
      * @param  float $number The number of books to return in range [1,100] (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function searchBooksRequest($query = null, $earliest_publish_year = null, $latest_publish_year = null, $min_rating = null, $max_rating = null, $genres = null, $authors = null, $isbn = null, $oclc = null, $sort = null, $sort_direction = null, $offset = null, $number = null)
+    public function searchBooksRequest($query = null, $earliest_publish_year = null, $latest_publish_year = null, $min_rating = null, $max_rating = null, $genres = null, $authors = null, $isbn = null, $oclc = null, $sort = null, $sort_direction = null, $group_results = null, $offset = null, $number = null)
     {
 
         $resourcePath = '/search-books';
@@ -1320,6 +1325,13 @@ class DefaultApi
         }
         if ($sort_direction !== null) {
             $queryParams['sort-direction'] = $sort_direction;
+        }
+        // query params
+        if (is_array($group_results)) {
+            $group_results = ObjectSerializer::serializeCollection($group_results, 'form', true);
+        }
+        if ($group_results !== null) {
+            $queryParams['group-results'] = $group_results;
         }
         // query params
         if (is_array($offset)) {

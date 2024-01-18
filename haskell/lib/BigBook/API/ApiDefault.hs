@@ -1,7 +1,7 @@
 {-
    Big Book API
 
-   The world's book wrapped into a single API.
+   Big Book API lets you semantically search over 4 million English books by text, genre, author, ISBN, and more. You can also find books that are similar to each other.
 
    OpenAPI Version: 3.0.0
    Big Book API API version: 1.0
@@ -219,6 +219,11 @@ instance HasOptionalParam SearchBooks Sort where
 instance HasOptionalParam SearchBooks SortDirection where
   applyOptionalParam req (SortDirection xs) =
     req `addQuery` toQuery ("sort-direction", Just xs)
+
+-- | /Optional Param/ "group-results" - Whether to group similar editions of the same book.
+instance HasOptionalParam SearchBooks GroupResults where
+  applyOptionalParam req (GroupResults xs) =
+    req `addQuery` toQuery ("group-results", Just xs)
 
 -- | /Optional Param/ "offset" - The number of books to skip in range [0,1000]
 instance HasOptionalParam SearchBooks Offset where

@@ -1,7 +1,7 @@
 /*
 Big Book API
 
-The world's book wrapped into a single API.
+Big Book API lets you semantically search over 4 million English books by text, genre, author, ISBN, and more. You can also find books that are similar to each other.
 
 API version: 1.0
 Contact: mail@bigbookapi.com
@@ -470,6 +470,7 @@ type ApiSearchBooksRequest struct {
 	oclc *string
 	sort *string
 	sortDirection *string
+	groupResults *bool
 	offset *float32
 	number *float32
 }
@@ -527,6 +528,11 @@ func (r ApiSearchBooksRequest) Sort(sort string) ApiSearchBooksRequest {
 // Whether to sort ascending or descending (ASC or DESC).
 func (r ApiSearchBooksRequest) SortDirection(sortDirection string) ApiSearchBooksRequest {
 	r.sortDirection = &sortDirection
+	return r
+}
+// Whether to group similar editions of the same book.
+func (r ApiSearchBooksRequest) GroupResults(groupResults bool) ApiSearchBooksRequest {
+	r.groupResults = &groupResults
 	return r
 }
 // The number of books to skip in range [0,1000]
@@ -612,6 +618,9 @@ func (a *DefaultApiService) SearchBooksExecute(r ApiSearchBooksRequest) (map[str
 	}
 	if r.sortDirection != nil {
 		localVarQueryParams.Add("sort-direction", parameterToString(*r.sortDirection, ""))
+	}
+	if r.groupResults != nil {
+		localVarQueryParams.Add("group-results", parameterToString(*r.groupResults, ""))
 	}
 	if r.offset != nil {
 		localVarQueryParams.Add("offset", parameterToString(*r.offset, ""))

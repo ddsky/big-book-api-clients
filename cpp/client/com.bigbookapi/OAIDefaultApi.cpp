@@ -1,6 +1,6 @@
 /**
  * Big Book API
- * The world's book wrapped into a single API.
+ * Big Book API lets you semantically search over 4 million English books by text, genre, author, ISBN, and more. You can also find books that are similar to each other.
  *
  * The version of the OpenAPI document: 1.0
  * Contact: mail@bigbookapi.com
@@ -492,7 +492,7 @@ void OAIDefaultApi::searchAuthorsCallback(OAIHttpRequestWorker *worker) {
     }
 }
 
-void OAIDefaultApi::searchBooks(const ::OpenAPI::OptionalParam<QString> &query, const ::OpenAPI::OptionalParam<double> &earliest_publish_year, const ::OpenAPI::OptionalParam<double> &latest_publish_year, const ::OpenAPI::OptionalParam<double> &min_rating, const ::OpenAPI::OptionalParam<double> &max_rating, const ::OpenAPI::OptionalParam<QString> &genres, const ::OpenAPI::OptionalParam<QString> &authors, const ::OpenAPI::OptionalParam<QString> &isbn, const ::OpenAPI::OptionalParam<QString> &oclc, const ::OpenAPI::OptionalParam<QString> &sort, const ::OpenAPI::OptionalParam<QString> &sort_direction, const ::OpenAPI::OptionalParam<double> &offset, const ::OpenAPI::OptionalParam<double> &number) {
+void OAIDefaultApi::searchBooks(const ::OpenAPI::OptionalParam<QString> &query, const ::OpenAPI::OptionalParam<double> &earliest_publish_year, const ::OpenAPI::OptionalParam<double> &latest_publish_year, const ::OpenAPI::OptionalParam<double> &min_rating, const ::OpenAPI::OptionalParam<double> &max_rating, const ::OpenAPI::OptionalParam<QString> &genres, const ::OpenAPI::OptionalParam<QString> &authors, const ::OpenAPI::OptionalParam<QString> &isbn, const ::OpenAPI::OptionalParam<QString> &oclc, const ::OpenAPI::OptionalParam<QString> &sort, const ::OpenAPI::OptionalParam<QString> &sort_direction, const ::OpenAPI::OptionalParam<bool> &group_results, const ::OpenAPI::OptionalParam<double> &offset, const ::OpenAPI::OptionalParam<double> &number) {
     QString fullPath = QString(_serverConfigs["searchBooks"][_serverIndices.value("searchBooks")].URL()+"/search-books");
     
     if (_apiKeys.contains("apiKey")) {
@@ -672,6 +672,21 @@ void OAIDefaultApi::searchBooks(const ::OpenAPI::OptionalParam<QString> &query, 
             fullPath.append("?");
 
         fullPath.append(QUrl::toPercentEncoding("sort-direction")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(sort_direction.value())));
+    }
+    if (group_results.hasValue())
+    {
+        queryStyle = "form";
+        if (queryStyle == "")
+            queryStyle = "form";
+        queryPrefix = getParamStylePrefix(queryStyle);
+        querySuffix = getParamStyleSuffix(queryStyle);
+        queryDelimiter = getParamStyleDelimiter(queryStyle, "group-results", false);
+        if (fullPath.indexOf("?") > 0)
+            fullPath.append(queryPrefix);
+        else
+            fullPath.append("?");
+
+        fullPath.append(QUrl::toPercentEncoding("group-results")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(group_results.value())));
     }
     if (offset.hasValue())
     {

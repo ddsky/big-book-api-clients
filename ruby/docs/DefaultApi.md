@@ -287,6 +287,7 @@ opts = {
   oclc: '864418200', # String | Only the book matching the OCLC will be returned
   sort: 'rating', # String | The sorting criteria (publish-date or rating).
   sort_direction: 'DESC', # String | Whether to sort ascending or descending (ASC or DESC).
+  group_results: false, # Boolean | Whether to group similar editions of the same book.
   offset: 0, # Float | The number of books to skip in range [0,1000]
   number: 10 # Float | The number of books to return in range [1,100]
 }
@@ -333,6 +334,7 @@ end
 | **oclc** | **String** | Only the book matching the OCLC will be returned | [optional] |
 | **sort** | **String** | The sorting criteria (publish-date or rating). | [optional] |
 | **sort_direction** | **String** | Whether to sort ascending or descending (ASC or DESC). | [optional] |
+| **group_results** | **Boolean** | Whether to group similar editions of the same book. | [optional] |
 | **offset** | **Float** | The number of books to skip in range [0,1000] | [optional] |
 | **number** | **Float** | The number of books to return in range [1,100] | [optional] |
 

@@ -83,7 +83,7 @@ search_books(Ctx, Optional) ->
 
     Method = get,
     Path = [<<"/search-books">>],
-    QS = lists:flatten([])++openapi_utils:optional_params(['query', 'earliest-publish-year', 'latest-publish-year', 'min-rating', 'max-rating', 'genres', 'authors', 'isbn', 'oclc', 'sort', 'sort-direction', 'offset', 'number'], _OptionalParams),
+    QS = lists:flatten([])++openapi_utils:optional_params(['query', 'earliest-publish-year', 'latest-publish-year', 'min-rating', 'max-rating', 'genres', 'authors', 'isbn', 'oclc', 'sort', 'sort-direction', 'group-results', 'offset', 'number'], _OptionalParams),
     Headers = [],
     Body1 = [],
     ContentTypeHeader = openapi_utils:select_header_content_type([]),

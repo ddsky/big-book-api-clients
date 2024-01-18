@@ -1,6 +1,6 @@
 /**
  * Big Book API
- * The world's book wrapped into a single API.
+ * Big Book API lets you semantically search over 4 million English books by text, genre, author, ISBN, and more. You can also find books that are similar to each other.
  *
  * The version of the OpenAPI document: 1.0
  * Contact: mail@bigbookapi.com
@@ -17,7 +17,7 @@ import DefaultApi from './com.bigbookapi/DefaultApi';
 
 
 /**
-* The_worlds_book_wrapped_into_a_single_API_.<br>
+* Big_Book_API_lets_you_semantically_search_over_4_million_English_books_by_text_genre_author_ISBN_and_more__You_can_also_find_books_that_are_similar_to_each_other_.<br>
 * The <code>index</code> module provides access to constructors for all the classes which comprise the public API.
 * <p>
 * An AMD (recommended!) or CommonJS application will generally do something equivalent to the following:

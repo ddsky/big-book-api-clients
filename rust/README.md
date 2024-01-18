@@ -1,6 +1,6 @@
 # Rust API client for openapi
 
-The world's book wrapped into a single API.
+Big Book API lets you semantically search over 4 million English books by text, genre, author, ISBN, and more. You can also find books that are similar to each other.
 
 
 ## Overview

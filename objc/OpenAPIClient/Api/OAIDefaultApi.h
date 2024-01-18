@@ -3,7 +3,7 @@
 
 /**
 * Big Book API
-* The world's book wrapped into a single API.
+* Big Book API lets you semantically search over 4 million English books by text, genre, author, ISBN, and more. You can also find books that are similar to each other.
 *
 * The version of the OpenAPI document: 1.0
 * Contact: mail@bigbookapi.com
@@ -93,6 +93,7 @@ extern NSInteger kOAIDefaultApiMissingParamErrorCode;
 /// @param oclc Only the book matching the OCLC will be returned (optional)
 /// @param sort The sorting criteria (publish-date or rating). (optional)
 /// @param sortDirection Whether to sort ascending or descending (ASC or DESC). (optional)
+/// @param groupResults Whether to group similar editions of the same book. (optional)
 /// @param offset The number of books to skip in range [0,1000] (optional)
 /// @param number The number of books to return in range [1,100] (optional)
 /// 
@@ -115,6 +116,7 @@ extern NSInteger kOAIDefaultApiMissingParamErrorCode;
     oclc: (NSString*) oclc
     sort: (NSString*) sort
     sortDirection: (NSString*) sortDirection
+    groupResults: (NSNumber*) groupResults
     offset: (NSNumber*) offset
     number: (NSNumber*) number
     completionHandler: (void (^)(NSObject* output, NSError* error)) handler;

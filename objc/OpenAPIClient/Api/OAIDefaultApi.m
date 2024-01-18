@@ -284,6 +284,8 @@ NSInteger kOAIDefaultApiMissingParamErrorCode = 234513;
 ///
 ///  @param sortDirection Whether to sort ascending or descending (ASC or DESC). (optional)
 ///
+///  @param groupResults Whether to group similar editions of the same book. (optional)
+///
 ///  @param offset The number of books to skip in range [0,1000] (optional)
 ///
 ///  @param number The number of books to return in range [1,100] (optional)
@@ -301,6 +303,7 @@ NSInteger kOAIDefaultApiMissingParamErrorCode = 234513;
     oclc: (NSString*) oclc
     sort: (NSString*) sort
     sortDirection: (NSString*) sortDirection
+    groupResults: (NSNumber*) groupResults
     offset: (NSNumber*) offset
     number: (NSNumber*) number
     completionHandler: (void (^)(NSObject* output, NSError* error)) handler {
@@ -341,6 +344,9 @@ NSInteger kOAIDefaultApiMissingParamErrorCode = 234513;
     }
     if (sortDirection != nil) {
         queryParams[@"sort-direction"] = sortDirection;
+    }
+    if (groupResults != nil) {
+        queryParams[@"group-results"] = [groupResults isEqual:@(YES)] ? @"true" : @"false";
     }
     if (offset != nil) {
         queryParams[@"offset"] = offset;

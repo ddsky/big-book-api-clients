@@ -1,6 +1,6 @@
 /*
  * Big Book API
- * The world's book wrapped into a single API.
+ * Big Book API lets you semantically search over 4 million English books by text, genre, author, ISBN, and more. You can also find books that are similar to each other.
  *
  * The version of the OpenAPI document: 1.0
  * Contact: mail@bigbookapi.com
@@ -101,9 +101,10 @@ public class DefaultApiTest {
         String oclc = null;
         String sort = null;
         String sortDirection = null;
+        Boolean groupResults = null;
         BigDecimal offset = null;
         BigDecimal number = null;
-                Object response = api.searchBooks(query, earliestPublishYear, latestPublishYear, minRating, maxRating, genres, authors, isbn, oclc, sort, sortDirection, offset, number);
+                Object response = api.searchBooks(query, earliestPublishYear, latestPublishYear, minRating, maxRating, genres, authors, isbn, oclc, sort, sortDirection, groupResults, offset, number);
         // TODO: test validations
     }
     

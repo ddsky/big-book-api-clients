@@ -234,6 +234,8 @@ let body:.DefaultApiSearchBooksRequest = {
   sort: "rating",
   // string | Whether to sort ascending or descending (ASC or DESC). (optional)
   sortDirection: "DESC",
+  // boolean | Whether to group similar editions of the same book. (optional)
+  groupResults: false,
   // number | The number of books to skip in range [0,1000] (optional)
   offset: 0,
   // number | The number of books to return in range [1,100] (optional)
@@ -261,6 +263,7 @@ Name | Type | Description  | Notes
  **oclc** | [**string**] | Only the book matching the OCLC will be returned | (optional) defaults to undefined
  **sort** | [**string**] | The sorting criteria (publish-date or rating). | (optional) defaults to undefined
  **sortDirection** | [**string**] | Whether to sort ascending or descending (ASC or DESC). | (optional) defaults to undefined
+ **groupResults** | [**boolean**] | Whether to group similar editions of the same book. | (optional) defaults to undefined
  **offset** | [**number**] | The number of books to skip in range [0,1000] | (optional) defaults to undefined
  **number** | [**number**] | The number of books to return in range [1,100] | (optional) defaults to undefined
 

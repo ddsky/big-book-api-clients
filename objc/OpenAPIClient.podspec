@@ -13,7 +13,7 @@ Pod::Spec.new do |s|
 
     s.summary          = "Big Book API"
     s.description      = <<-DESC
-                         The world's book wrapped into a single API.
+                         Big Book API lets you semantically search over 4 million English books by text, genre, author, ISBN, and more. You can also find books that are similar to each other.
                          DESC
 
     s.platform     = :ios, '7.0'

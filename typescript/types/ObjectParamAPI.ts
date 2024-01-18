@@ -119,6 +119,12 @@ export interface DefaultApiSearchBooksRequest {
      */
     sortDirection?: string
     /**
+     * Whether to group similar editions of the same book.
+     * @type boolean
+     * @memberof DefaultApisearchBooks
+     */
+    groupResults?: boolean
+    /**
      * The number of books to skip in range [0,1000]
      * @type number
      * @memberof DefaultApisearchBooks
@@ -172,7 +178,7 @@ export class ObjectDefaultApi {
      * @param param the request object
      */
     public searchBooks(param: DefaultApiSearchBooksRequest = {}, options?: Configuration): Promise<any> {
-        return this.api.searchBooks(param.query, param.earliestPublishYear, param.latestPublishYear, param.minRating, param.maxRating, param.genres, param.authors, param.isbn, param.oclc, param.sort, param.sortDirection, param.offset, param.number,  options).toPromise();
+        return this.api.searchBooks(param.query, param.earliestPublishYear, param.latestPublishYear, param.minRating, param.maxRating, param.genres, param.authors, param.isbn, param.oclc, param.sort, param.sortDirection, param.groupResults, param.offset, param.number,  options).toPromise();
     }
 
 }

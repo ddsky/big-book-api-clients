@@ -187,7 +187,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **search_books**
-> object search_books(query => $query, earliest_publish_year => $earliest_publish_year, latest_publish_year => $latest_publish_year, min_rating => $min_rating, max_rating => $max_rating, genres => $genres, authors => $authors, isbn => $isbn, oclc => $oclc, sort => $sort, sort_direction => $sort_direction, offset => $offset, number => $number)
+> object search_books(query => $query, earliest_publish_year => $earliest_publish_year, latest_publish_year => $latest_publish_year, min_rating => $min_rating, max_rating => $max_rating, genres => $genres, authors => $authors, isbn => $isbn, oclc => $oclc, sort => $sort, sort_direction => $sort_direction, group_results => $group_results, offset => $offset, number => $number)
 
 Search Books
 
@@ -220,11 +220,12 @@ my $isbn = 9781781257654; # string | Only the book matching the ISBN-13 will be 
 my $oclc = 864418200; # string | Only the book matching the OCLC will be returned
 my $sort = rating; # string | The sorting criteria (publish-date or rating).
 my $sort_direction = DESC; # string | Whether to sort ascending or descending (ASC or DESC).
+my $group_results = false; # boolean | Whether to group similar editions of the same book.
 my $offset = 0; # double | The number of books to skip in range [0,1000]
 my $number = 10; # double | The number of books to return in range [1,100]
 
 eval {
-    my $result = $api_instance->search_books(query => $query, earliest_publish_year => $earliest_publish_year, latest_publish_year => $latest_publish_year, min_rating => $min_rating, max_rating => $max_rating, genres => $genres, authors => $authors, isbn => $isbn, oclc => $oclc, sort => $sort, sort_direction => $sort_direction, offset => $offset, number => $number);
+    my $result = $api_instance->search_books(query => $query, earliest_publish_year => $earliest_publish_year, latest_publish_year => $latest_publish_year, min_rating => $min_rating, max_rating => $max_rating, genres => $genres, authors => $authors, isbn => $isbn, oclc => $oclc, sort => $sort, sort_direction => $sort_direction, group_results => $group_results, offset => $offset, number => $number);
     print Dumper($result);
 };
 if ($@) {
@@ -247,6 +248,7 @@ Name | Type | Description  | Notes
  **oclc** | **string**| Only the book matching the OCLC will be returned | [optional] 
  **sort** | **string**| The sorting criteria (publish-date or rating). | [optional] 
  **sort_direction** | **string**| Whether to sort ascending or descending (ASC or DESC). | [optional] 
+ **group_results** | **boolean**| Whether to group similar editions of the same book. | [optional] 
  **offset** | **double**| The number of books to skip in range [0,1000] | [optional] 
  **number** | **double**| The number of books to return in range [1,100] | [optional] 
 

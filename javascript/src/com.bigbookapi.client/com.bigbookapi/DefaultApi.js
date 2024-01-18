@@ -1,6 +1,6 @@
 /**
  * Big Book API
- * The world's book wrapped into a single API.
+ * Big Book API lets you semantically search over 4 million English books by text, genre, author, ISBN, and more. You can also find books that are similar to each other.
  *
  * The version of the OpenAPI document: 1.0
  * Contact: mail@bigbookapi.com
@@ -191,6 +191,7 @@ export default class DefaultApi {
      * @param {String} opts.oclc Only the book matching the OCLC will be returned
      * @param {String} opts.sort The sorting criteria (publish-date or rating).
      * @param {String} opts.sortDirection Whether to sort ascending or descending (ASC or DESC).
+     * @param {Boolean} opts.groupResults Whether to group similar editions of the same book.
      * @param {Number} opts.offset The number of books to skip in range [0,1000]
      * @param {Number} opts.number The number of books to return in range [1,100]
      * @param {module:com.bigbookapi.client/com.bigbookapi/DefaultApi~searchBooksCallback} callback The callback function, accepting three arguments: error, data, response
@@ -214,6 +215,7 @@ export default class DefaultApi {
         'oclc': opts['oclc'],
         'sort': opts['sort'],
         'sort-direction': opts['sortDirection'],
+        'group-results': opts['groupResults'],
         'offset': opts['offset'],
         'number': opts['number']
       };

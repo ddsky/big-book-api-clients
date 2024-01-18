@@ -1,6 +1,6 @@
 /**
  * Big Book API
- * The world's book wrapped into a single API.
+ * Big Book API lets you semantically search over 4 million English books by text, genre, author, ISBN, and more. You can also find books that are similar to each other.
  *
  * The version of the OpenAPI document: 1.0
  * Contact: mail@bigbookapi.com
@@ -450,11 +450,12 @@ public class DefaultApi {
    * @param oclc Only the book matching the OCLC will be returned
    * @param sort The sorting criteria (publish-date or rating).
    * @param sortDirection Whether to sort ascending or descending (ASC or DESC).
+   * @param groupResults Whether to group similar editions of the same book.
    * @param offset The number of books to skip in range [0,1000]
    * @param number The number of books to return in range [1,100]
    * @return Object
   */
-  public Object searchBooks (String query, BigDecimal earliestPublishYear, BigDecimal latestPublishYear, BigDecimal minRating, BigDecimal maxRating, String genres, String authors, String isbn, String oclc, String sort, String sortDirection, BigDecimal offset, BigDecimal number) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+  public Object searchBooks (String query, BigDecimal earliestPublishYear, BigDecimal latestPublishYear, BigDecimal minRating, BigDecimal maxRating, String genres, String authors, String isbn, String oclc, String sort, String sortDirection, Boolean groupResults, BigDecimal offset, BigDecimal number) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
     Object postBody = null;
 
     // create path and map variables
@@ -477,6 +478,7 @@ public class DefaultApi {
     queryParams.addAll(ApiInvoker.parameterToPairs("", "oclc", oclc));
     queryParams.addAll(ApiInvoker.parameterToPairs("", "sort", sort));
     queryParams.addAll(ApiInvoker.parameterToPairs("", "sort-direction", sortDirection));
+    queryParams.addAll(ApiInvoker.parameterToPairs("", "group-results", groupResults));
     queryParams.addAll(ApiInvoker.parameterToPairs("", "offset", offset));
     queryParams.addAll(ApiInvoker.parameterToPairs("", "number", number));
     String[] contentTypes = {
@@ -521,9 +523,9 @@ public class DefaultApi {
       /**
    * Search Books
    *  Search and filter books based on matching a query, the ISBN, rating, and more fields. The query is semantically parsed using our own large ontology. That means you can search for \&quot;books about dogs\&quot; and will automatically also find books about \&quot;border collies\&quot; and other types without specifying them in the query. 
-   * @param query The search query.   * @param earliestPublishYear The books must have been published after this year.   * @param latestPublishYear The books must have been published before this year.   * @param minRating The minimum rating the book must have gotten in the interval [0,1].   * @param maxRating The maximum rating the book must have gotten in the interval [0,1].   * @param genres A comma-separated list of  genres. Only books from any of the given genres will be returned.   * @param authors A comma-separated list of author ids or names. Only books from any of the given authors will be returned. You can retrieve author ids from the search authors endpoint. Pass author names is slower and if two authors have the same name you can&#39;t disambiguate.   * @param isbn Only the book matching the ISBN-13 will be returned   * @param oclc Only the book matching the OCLC will be returned   * @param sort The sorting criteria (publish-date or rating).   * @param sortDirection Whether to sort ascending or descending (ASC or DESC).   * @param offset The number of books to skip in range [0,1000]   * @param number The number of books to return in range [1,100]
+   * @param query The search query.   * @param earliestPublishYear The books must have been published after this year.   * @param latestPublishYear The books must have been published before this year.   * @param minRating The minimum rating the book must have gotten in the interval [0,1].   * @param maxRating The maximum rating the book must have gotten in the interval [0,1].   * @param genres A comma-separated list of  genres. Only books from any of the given genres will be returned.   * @param authors A comma-separated list of author ids or names. Only books from any of the given authors will be returned. You can retrieve author ids from the search authors endpoint. Pass author names is slower and if two authors have the same name you can&#39;t disambiguate.   * @param isbn Only the book matching the ISBN-13 will be returned   * @param oclc Only the book matching the OCLC will be returned   * @param sort The sorting criteria (publish-date or rating).   * @param sortDirection Whether to sort ascending or descending (ASC or DESC).   * @param groupResults Whether to group similar editions of the same book.   * @param offset The number of books to skip in range [0,1000]   * @param number The number of books to return in range [1,100]
   */
-  public void searchBooks (String query, BigDecimal earliestPublishYear, BigDecimal latestPublishYear, BigDecimal minRating, BigDecimal maxRating, String genres, String authors, String isbn, String oclc, String sort, String sortDirection, BigDecimal offset, BigDecimal number, final Response.Listener<Object> responseListener, final Response.ErrorListener errorListener) {
+  public void searchBooks (String query, BigDecimal earliestPublishYear, BigDecimal latestPublishYear, BigDecimal minRating, BigDecimal maxRating, String genres, String authors, String isbn, String oclc, String sort, String sortDirection, Boolean groupResults, BigDecimal offset, BigDecimal number, final Response.Listener<Object> responseListener, final Response.ErrorListener errorListener) {
     Object postBody = null;
 
 
@@ -548,6 +550,7 @@ public class DefaultApi {
     queryParams.addAll(ApiInvoker.parameterToPairs("", "oclc", oclc));
     queryParams.addAll(ApiInvoker.parameterToPairs("", "sort", sort));
     queryParams.addAll(ApiInvoker.parameterToPairs("", "sort-direction", sortDirection));
+    queryParams.addAll(ApiInvoker.parameterToPairs("", "group-results", groupResults));
     queryParams.addAll(ApiInvoker.parameterToPairs("", "offset", offset));
     queryParams.addAll(ApiInvoker.parameterToPairs("", "number", number));
 

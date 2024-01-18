@@ -225,7 +225,7 @@ Name | Type | Description  | Notes
 
 ## SearchBooks
 
-> map[string]interface{} SearchBooks(ctx).Query(query).EarliestPublishYear(earliestPublishYear).LatestPublishYear(latestPublishYear).MinRating(minRating).MaxRating(maxRating).Genres(genres).Authors(authors).Isbn(isbn).Oclc(oclc).Sort(sort).SortDirection(sortDirection).Offset(offset).Number(number).Execute()
+> map[string]interface{} SearchBooks(ctx).Query(query).EarliestPublishYear(earliestPublishYear).LatestPublishYear(latestPublishYear).MinRating(minRating).MaxRating(maxRating).Genres(genres).Authors(authors).Isbn(isbn).Oclc(oclc).Sort(sort).SortDirection(sortDirection).GroupResults(groupResults).Offset(offset).Number(number).Execute()
 
 Search Books
 
@@ -255,12 +255,13 @@ func main() {
     oclc := "864418200" // string | Only the book matching the OCLC will be returned (optional)
     sort := "rating" // string | The sorting criteria (publish-date or rating). (optional)
     sortDirection := "DESC" // string | Whether to sort ascending or descending (ASC or DESC). (optional)
+    groupResults := false // bool | Whether to group similar editions of the same book. (optional)
     offset := float32(0) // float32 | The number of books to skip in range [0,1000] (optional)
     number := float32(10) // float32 | The number of books to return in range [1,100] (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DefaultApi.SearchBooks(context.Background()).Query(query).EarliestPublishYear(earliestPublishYear).LatestPublishYear(latestPublishYear).MinRating(minRating).MaxRating(maxRating).Genres(genres).Authors(authors).Isbn(isbn).Oclc(oclc).Sort(sort).SortDirection(sortDirection).Offset(offset).Number(number).Execute()
+    resp, r, err := apiClient.DefaultApi.SearchBooks(context.Background()).Query(query).EarliestPublishYear(earliestPublishYear).LatestPublishYear(latestPublishYear).MinRating(minRating).MaxRating(maxRating).Genres(genres).Authors(authors).Isbn(isbn).Oclc(oclc).Sort(sort).SortDirection(sortDirection).GroupResults(groupResults).Offset(offset).Number(number).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `DefaultApi.SearchBooks``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -292,6 +293,7 @@ Name | Type | Description  | Notes
  **oclc** | **string** | Only the book matching the OCLC will be returned | 
  **sort** | **string** | The sorting criteria (publish-date or rating). | 
  **sortDirection** | **string** | Whether to sort ascending or descending (ASC or DESC). | 
+ **groupResults** | **bool** | Whether to group similar editions of the same book. | 
  **offset** | **float32** | The number of books to skip in range [0,1000] | 
  **number** | **float32** | The number of books to return in range [1,100] | 
 

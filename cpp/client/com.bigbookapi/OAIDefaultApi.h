@@ -1,6 +1,6 @@
 /**
  * Big Book API
- * The world's book wrapped into a single API.
+ * Big Book API lets you semantically search over 4 million English books by text, genre, author, ISBN, and more. You can also find books that are similar to each other.
  *
  * The version of the OpenAPI document: 1.0
  * Contact: mail@bigbookapi.com
@@ -87,10 +87,11 @@ public:
     * @param[in]  oclc QString [optional]
     * @param[in]  sort QString [optional]
     * @param[in]  sort_direction QString [optional]
+    * @param[in]  group_results bool [optional]
     * @param[in]  offset double [optional]
     * @param[in]  number double [optional]
     */
-    void searchBooks(const ::OpenAPI::OptionalParam<QString> &query = ::OpenAPI::OptionalParam<QString>(), const ::OpenAPI::OptionalParam<double> &earliest_publish_year = ::OpenAPI::OptionalParam<double>(), const ::OpenAPI::OptionalParam<double> &latest_publish_year = ::OpenAPI::OptionalParam<double>(), const ::OpenAPI::OptionalParam<double> &min_rating = ::OpenAPI::OptionalParam<double>(), const ::OpenAPI::OptionalParam<double> &max_rating = ::OpenAPI::OptionalParam<double>(), const ::OpenAPI::OptionalParam<QString> &genres = ::OpenAPI::OptionalParam<QString>(), const ::OpenAPI::OptionalParam<QString> &authors = ::OpenAPI::OptionalParam<QString>(), const ::OpenAPI::OptionalParam<QString> &isbn = ::OpenAPI::OptionalParam<QString>(), const ::OpenAPI::OptionalParam<QString> &oclc = ::OpenAPI::OptionalParam<QString>(), const ::OpenAPI::OptionalParam<QString> &sort = ::OpenAPI::OptionalParam<QString>(), const ::OpenAPI::OptionalParam<QString> &sort_direction = ::OpenAPI::OptionalParam<QString>(), const ::OpenAPI::OptionalParam<double> &offset = ::OpenAPI::OptionalParam<double>(), const ::OpenAPI::OptionalParam<double> &number = ::OpenAPI::OptionalParam<double>());
+    void searchBooks(const ::OpenAPI::OptionalParam<QString> &query = ::OpenAPI::OptionalParam<QString>(), const ::OpenAPI::OptionalParam<double> &earliest_publish_year = ::OpenAPI::OptionalParam<double>(), const ::OpenAPI::OptionalParam<double> &latest_publish_year = ::OpenAPI::OptionalParam<double>(), const ::OpenAPI::OptionalParam<double> &min_rating = ::OpenAPI::OptionalParam<double>(), const ::OpenAPI::OptionalParam<double> &max_rating = ::OpenAPI::OptionalParam<double>(), const ::OpenAPI::OptionalParam<QString> &genres = ::OpenAPI::OptionalParam<QString>(), const ::OpenAPI::OptionalParam<QString> &authors = ::OpenAPI::OptionalParam<QString>(), const ::OpenAPI::OptionalParam<QString> &isbn = ::OpenAPI::OptionalParam<QString>(), const ::OpenAPI::OptionalParam<QString> &oclc = ::OpenAPI::OptionalParam<QString>(), const ::OpenAPI::OptionalParam<QString> &sort = ::OpenAPI::OptionalParam<QString>(), const ::OpenAPI::OptionalParam<QString> &sort_direction = ::OpenAPI::OptionalParam<QString>(), const ::OpenAPI::OptionalParam<bool> &group_results = ::OpenAPI::OptionalParam<bool>(), const ::OpenAPI::OptionalParam<double> &offset = ::OpenAPI::OptionalParam<double>(), const ::OpenAPI::OptionalParam<double> &number = ::OpenAPI::OptionalParam<double>());
 
 
 private:

@@ -1,7 +1,7 @@
 /*
  * Big Book API
  *
- * The world's book wrapped into a single API.
+ * Big Book API lets you semantically search over 4 million English books by text, genre, author, ISBN, and more. You can also find books that are similar to each other.
  *
  * The version of the OpenAPI document: 1.0
  * Contact: mail@bigbookapi.com
@@ -209,7 +209,7 @@ pub async fn search_authors(configuration: &configuration::Configuration, name: 
 }
 
 ///  Search and filter books based on matching a query, the ISBN, rating, and more fields. The query is semantically parsed using our own large ontology. That means you can search for \"books about dogs\" and will automatically also find books about \"border collies\" and other types without specifying them in the query. 
-pub async fn search_books(configuration: &configuration::Configuration, query: Option<&str>, earliest_publish_year: Option<f32>, latest_publish_year: Option<f32>, min_rating: Option<f32>, max_rating: Option<f32>, genres: Option<&str>, authors: Option<&str>, isbn: Option<&str>, oclc: Option<&str>, sort: Option<&str>, sort_direction: Option<&str>, offset: Option<f32>, number: Option<f32>) -> Result<serde_json::Value, Error<SearchBooksError>> {
+pub async fn search_books(configuration: &configuration::Configuration, query: Option<&str>, earliest_publish_year: Option<f32>, latest_publish_year: Option<f32>, min_rating: Option<f32>, max_rating: Option<f32>, genres: Option<&str>, authors: Option<&str>, isbn: Option<&str>, oclc: Option<&str>, sort: Option<&str>, sort_direction: Option<&str>, group_results: Option<bool>, offset: Option<f32>, number: Option<f32>) -> Result<serde_json::Value, Error<SearchBooksError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -249,6 +249,9 @@ pub async fn search_books(configuration: &configuration::Configuration, query: O
     }
     if let Some(ref local_var_str) = sort_direction {
         local_var_req_builder = local_var_req_builder.query(&[("sort-direction", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = group_results {
+        local_var_req_builder = local_var_req_builder.query(&[("group-results", &local_var_str.to_string())]);
     }
     if let Some(ref local_var_str) = offset {
         local_var_req_builder = local_var_req_builder.query(&[("offset", &local_var_str.to_string())]);

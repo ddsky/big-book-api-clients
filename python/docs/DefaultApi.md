@@ -348,6 +348,7 @@ with openapi_client.ApiClient(configuration) as api_client:
     oclc = "864418200" # str | Only the book matching the OCLC will be returned (optional)
     sort = "rating" # str | The sorting criteria (publish-date or rating). (optional)
     sort_direction = "DESC" # str | Whether to sort ascending or descending (ASC or DESC). (optional)
+    group_results = False # bool | Whether to group similar editions of the same book. (optional)
     offset = 0 # float | The number of books to skip in range [0,1000] (optional)
     number = 10 # float | The number of books to return in range [1,100] (optional)
 
@@ -355,7 +356,7 @@ with openapi_client.ApiClient(configuration) as api_client:
     # and optional values
     try:
         # Search Books
-        api_response = api_instance.search_books(query=query, earliest_publish_year=earliest_publish_year, latest_publish_year=latest_publish_year, min_rating=min_rating, max_rating=max_rating, genres=genres, authors=authors, isbn=isbn, oclc=oclc, sort=sort, sort_direction=sort_direction, offset=offset, number=number)
+        api_response = api_instance.search_books(query=query, earliest_publish_year=earliest_publish_year, latest_publish_year=latest_publish_year, min_rating=min_rating, max_rating=max_rating, genres=genres, authors=authors, isbn=isbn, oclc=oclc, sort=sort, sort_direction=sort_direction, group_results=group_results, offset=offset, number=number)
         pprint(api_response)
     except openapi_client.ApiException as e:
         print("Exception when calling DefaultApi->search_books: %s\n" % e)
@@ -377,6 +378,7 @@ Name | Type | Description  | Notes
  **oclc** | **str**| Only the book matching the OCLC will be returned | [optional]
  **sort** | **str**| The sorting criteria (publish-date or rating). | [optional]
  **sort_direction** | **str**| Whether to sort ascending or descending (ASC or DESC). | [optional]
+ **group_results** | **bool**| Whether to group similar editions of the same book. | [optional]
  **offset** | **float**| The number of books to skip in range [0,1000] | [optional]
  **number** | **float**| The number of books to return in range [1,100] | [optional]
 

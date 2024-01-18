@@ -177,11 +177,13 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
      * @param oclc Only the book matching the OCLC will be returned
      * @param sort The sorting criteria (publish-date or rating).
      * @param sortDirection Whether to sort ascending or descending (ASC or DESC).
+     * @param groupResults Whether to group similar editions of the same book.
      * @param offset The number of books to skip in range [0,1000]
      * @param number The number of books to return in range [1,100]
      */
-    public async searchBooks(query?: string, earliestPublishYear?: number, latestPublishYear?: number, minRating?: number, maxRating?: number, genres?: string, authors?: string, isbn?: string, oclc?: string, sort?: string, sortDirection?: string, offset?: number, number?: number, _options?: Configuration): Promise<RequestContext> {
+    public async searchBooks(query?: string, earliestPublishYear?: number, latestPublishYear?: number, minRating?: number, maxRating?: number, genres?: string, authors?: string, isbn?: string, oclc?: string, sort?: string, sortDirection?: string, groupResults?: boolean, offset?: number, number?: number, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
+
 
 
 
@@ -256,6 +258,11 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
         // Query Params
         if (sortDirection !== undefined) {
             requestContext.setQueryParam("sort-direction", ObjectSerializer.serialize(sortDirection, "string", ""));
+        }
+
+        // Query Params
+        if (groupResults !== undefined) {
+            requestContext.setQueryParam("group-results", ObjectSerializer.serialize(groupResults, "boolean", ""));
         }
 
         // Query Params

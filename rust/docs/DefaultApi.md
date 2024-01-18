@@ -106,7 +106,7 @@ Name | Type | Description  | Required | Notes
 
 ## search_books
 
-> serde_json::Value search_books(query, earliest_publish_year, latest_publish_year, min_rating, max_rating, genres, authors, isbn, oclc, sort, sort_direction, offset, number)
+> serde_json::Value search_books(query, earliest_publish_year, latest_publish_year, min_rating, max_rating, genres, authors, isbn, oclc, sort, sort_direction, group_results, offset, number)
 Search Books
 
  Search and filter books based on matching a query, the ISBN, rating, and more fields. The query is semantically parsed using our own large ontology. That means you can search for \"books about dogs\" and will automatically also find books about \"border collies\" and other types without specifying them in the query. 
@@ -127,6 +127,7 @@ Name | Type | Description  | Required | Notes
 **oclc** | Option<**String**> | Only the book matching the OCLC will be returned |  |
 **sort** | Option<**String**> | The sorting criteria (publish-date or rating). |  |
 **sort_direction** | Option<**String**> | Whether to sort ascending or descending (ASC or DESC). |  |
+**group_results** | Option<**bool**> | Whether to group similar editions of the same book. |  |
 **offset** | Option<**f32**> | The number of books to skip in range [0,1000] |  |
 **number** | Option<**f32**> | The number of books to return in range [1,100] |  |
 

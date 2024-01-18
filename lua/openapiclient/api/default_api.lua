@@ -1,7 +1,7 @@
 --[[
   Big Book API
 
-  The world's book wrapped into a single API.
+  Big Book API lets you semantically search over 4 million English books by text, genre, author, ISBN, and more. You can also find books that are similar to each other.
 
   The version of the OpenAPI document: 1.0
   Contact: mail@bigbookapi.com
@@ -197,13 +197,13 @@ function default_api:search_authors(name, offset, Number_)
 	end
 end
 
-function default_api:search_books(query, earliest_publish_year, latest_publish_year, min_rating, max_rating, genres, authors, isbn, oclc, sort, sort_direction, offset, Number_)
+function default_api:search_books(query, earliest_publish_year, latest_publish_year, min_rating, max_rating, genres, authors, isbn, oclc, sort, sort_direction, group_results, offset, Number_)
 	local req = http_request.new_from_uri({
 		scheme = self.default_scheme;
 		host = self.host;
 		port = self.port;
-		path = string.format("%s/search-books?query=%s&earliest-publish-year=%s&latest-publish-year=%s&min-rating=%s&max-rating=%s&genres=%s&authors=%s&isbn=%s&oclc=%s&sort=%s&sort-direction=%s&offset=%s&number=%s",
-			self.basePath, http_util.encodeURIComponent(query), http_util.encodeURIComponent(earliest_publish_year), http_util.encodeURIComponent(latest_publish_year), http_util.encodeURIComponent(min_rating), http_util.encodeURIComponent(max_rating), http_util.encodeURIComponent(genres), http_util.encodeURIComponent(authors), http_util.encodeURIComponent(isbn), http_util.encodeURIComponent(oclc), http_util.encodeURIComponent(sort), http_util.encodeURIComponent(sort_direction), http_util.encodeURIComponent(offset), http_util.encodeURIComponent(Number_));
+		path = string.format("%s/search-books?query=%s&earliest-publish-year=%s&latest-publish-year=%s&min-rating=%s&max-rating=%s&genres=%s&authors=%s&isbn=%s&oclc=%s&sort=%s&sort-direction=%s&group-results=%s&offset=%s&number=%s",
+			self.basePath, http_util.encodeURIComponent(query), http_util.encodeURIComponent(earliest_publish_year), http_util.encodeURIComponent(latest_publish_year), http_util.encodeURIComponent(min_rating), http_util.encodeURIComponent(max_rating), http_util.encodeURIComponent(genres), http_util.encodeURIComponent(authors), http_util.encodeURIComponent(isbn), http_util.encodeURIComponent(oclc), http_util.encodeURIComponent(sort), http_util.encodeURIComponent(sort_direction), http_util.encodeURIComponent(group_results), http_util.encodeURIComponent(offset), http_util.encodeURIComponent(Number_));
 	})
 
 	-- set HTTP verb

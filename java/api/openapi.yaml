@@ -3,7 +3,9 @@ info:
   contact:
     email: mail@bigbookapi.com
     name: David Urbansky
-  description: The world's book wrapped into a single API.
+  description: Big Book API lets you semantically search over 4 million English books
+    by text, genre, author, ISBN, and more. You can also find books that are similar
+    to each other.
   termsOfService: https://bigbookapi.com/terms
   title: Big Book API
   version: "1.0"
@@ -130,6 +132,15 @@ paths:
         schema:
           example: DESC
           type: string
+        style: form
+      - description: Whether to group similar editions of the same book.
+        explode: false
+        in: query
+        name: group-results
+        required: false
+        schema:
+          example: false
+          type: boolean
         style: form
       - description: The number of books to skip in range [0,1000]
         explode: false

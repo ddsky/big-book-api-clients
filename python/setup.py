@@ -1,7 +1,7 @@
 """
     Big Book API
 
-    The world's book wrapped into a single API.  # noqa: E501
+    Big Book API lets you semantically search over 4 million English books by text, genre, author, ISBN, and more. You can also find books that are similar to each other.  # noqa: E501
 
     The version of the OpenAPI document: 1.0
     Contact: mail@bigbookapi.com
@@ -38,6 +38,6 @@ setup(
     packages=find_packages(exclude=["test", "tests"]),
     include_package_data=True,
     long_description="""\
-    The world&#39;s book wrapped into a single API.  # noqa: E501
+    Big Book API lets you semantically search over 4 million English books by text, genre, author, ISBN, and more. You can also find books that are similar to each other.  # noqa: E501
     """
 )

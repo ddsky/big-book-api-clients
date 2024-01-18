@@ -88,7 +88,7 @@ class DefaultApi {
 
     }
 
-    def searchBooks ( String query, BigDecimal earliestPublishYear, BigDecimal latestPublishYear, BigDecimal minRating, BigDecimal maxRating, String genres, String authors, String isbn, String oclc, String sort, String sortDirection, BigDecimal offset, BigDecimal number, Closure onSuccess, Closure onFailure)  {
+    def searchBooks ( String query, BigDecimal earliestPublishYear, BigDecimal latestPublishYear, BigDecimal minRating, BigDecimal maxRating, String genres, String authors, String isbn, String oclc, String sort, String sortDirection, Boolean groupResults, BigDecimal offset, BigDecimal number, Closure onSuccess, Closure onFailure)  {
         String resourcePath = "/search-books"
 
         // params
@@ -130,6 +130,9 @@ class DefaultApi {
         }
         if (sortDirection != null) {
             queryParams.put("sort-direction", sortDirection)
+        }
+        if (groupResults != null) {
+            queryParams.put("group-results", groupResults)
         }
         if (offset != null) {
             queryParams.put("offset", offset)

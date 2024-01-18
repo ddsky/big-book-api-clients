@@ -228,7 +228,7 @@ Name | Type | Description  | Notes
 
 <a name="searchbooks"></a>
 # **SearchBooks**
-> Object SearchBooks (string query, decimal? earliestPublishYear, decimal? latestPublishYear, decimal? minRating, decimal? maxRating, string genres, string authors, string isbn, string oclc, string sort, string sortDirection, decimal? offset, decimal? number)
+> Object SearchBooks (string query, decimal? earliestPublishYear, decimal? latestPublishYear, decimal? minRating, decimal? maxRating, string genres, string authors, string isbn, string oclc, string sort, string sortDirection, bool? groupResults, decimal? offset, decimal? number)
 
 Search Books
 
@@ -269,13 +269,14 @@ namespace Example
             var oclc = 864418200;  // string | Only the book matching the OCLC will be returned (optional) 
             var sort = rating;  // string | The sorting criteria (publish-date or rating). (optional) 
             var sortDirection = DESC;  // string | Whether to sort ascending or descending (ASC or DESC). (optional) 
+            var groupResults = false;  // bool? | Whether to group similar editions of the same book. (optional) 
             var offset = 0;  // decimal? | The number of books to skip in range [0,1000] (optional) 
             var number = 10;  // decimal? | The number of books to return in range [1,100] (optional) 
 
             try
             {
                 // Search Books
-                Object result = apiInstance.SearchBooks(query, earliestPublishYear, latestPublishYear, minRating, maxRating, genres, authors, isbn, oclc, sort, sortDirection, offset, number);
+                Object result = apiInstance.SearchBooks(query, earliestPublishYear, latestPublishYear, minRating, maxRating, genres, authors, isbn, oclc, sort, sortDirection, groupResults, offset, number);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -302,6 +303,7 @@ Name | Type | Description  | Notes
  **oclc** | **string**| Only the book matching the OCLC will be returned | [optional] 
  **sort** | **string**| The sorting criteria (publish-date or rating). | [optional] 
  **sortDirection** | **string**| Whether to sort ascending or descending (ASC or DESC). | [optional] 
+ **groupResults** | **bool?**| Whether to group similar editions of the same book. | [optional] 
  **offset** | **decimal?**| The number of books to skip in range [0,1000] | [optional] 
  **number** | **decimal?**| The number of books to return in range [1,100] | [optional] 
 

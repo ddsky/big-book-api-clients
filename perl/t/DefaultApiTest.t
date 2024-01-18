@@ -2,7 +2,7 @@
 
 Big Book API
 
-The world's book wrapped into a single API.
+Big Book API lets you semantically search over 4 million English books by text, genre, author, ISBN, and more. You can also find books that are similar to each other.
 
 The version of the OpenAPI document: 1.0
 Contact: mail@bigbookapi.com
@@ -68,7 +68,8 @@ isa_ok($api, 'WWW::OpenAPIClient::DefaultApi');
 #my $search_books_oclc = undef; # replace NULL with a proper value
 #my $search_books_sort = undef; # replace NULL with a proper value
 #my $search_books_sort_direction = undef; # replace NULL with a proper value
+#my $search_books_group_results = undef; # replace NULL with a proper value
 #my $search_books_offset = undef; # replace NULL with a proper value
 #my $search_books_number = undef; # replace NULL with a proper value
-#my $search_books_result = $api->search_books(query => $search_books_query, earliest_publish_year => $search_books_earliest_publish_year, latest_publish_year => $search_books_latest_publish_year, min_rating => $search_books_min_rating, max_rating => $search_books_max_rating, genres => $search_books_genres, authors => $search_books_authors, isbn => $search_books_isbn, oclc => $search_books_oclc, sort => $search_books_sort, sort_direction => $search_books_sort_direction, offset => $search_books_offset, number => $search_books_number);
+#my $search_books_result = $api->search_books(query => $search_books_query, earliest_publish_year => $search_books_earliest_publish_year, latest_publish_year => $search_books_latest_publish_year, min_rating => $search_books_min_rating, max_rating => $search_books_max_rating, genres => $search_books_genres, authors => $search_books_authors, isbn => $search_books_isbn, oclc => $search_books_oclc, sort => $search_books_sort, sort_direction => $search_books_sort_direction, group_results => $search_books_group_results, offset => $search_books_offset, number => $search_books_number);
 

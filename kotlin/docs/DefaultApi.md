@@ -177,7 +177,7 @@ Configure headerApiKey:
 
 <a name="searchBooks"></a>
 # **searchBooks**
-> kotlin.Any searchBooks(query, earliestPublishYear, latestPublishYear, minRating, maxRating, genres, authors, isbn, oclc, sort, sortDirection, offset, number)
+> kotlin.Any searchBooks(query, earliestPublishYear, latestPublishYear, minRating, maxRating, genres, authors, isbn, oclc, sort, sortDirection, groupResults, offset, number)
 
 Search Books
 
@@ -201,10 +201,11 @@ val isbn : kotlin.String = 9781781257654 // kotlin.String | Only the book matchi
 val oclc : kotlin.String = 864418200 // kotlin.String | Only the book matching the OCLC will be returned
 val sort : kotlin.String = rating // kotlin.String | The sorting criteria (publish-date or rating).
 val sortDirection : kotlin.String = DESC // kotlin.String | Whether to sort ascending or descending (ASC or DESC).
+val groupResults : kotlin.Boolean = false // kotlin.Boolean | Whether to group similar editions of the same book.
 val offset : java.math.BigDecimal = 0 // java.math.BigDecimal | The number of books to skip in range [0,1000]
 val number : java.math.BigDecimal = 10 // java.math.BigDecimal | The number of books to return in range [1,100]
 try {
-    val result : kotlin.Any = apiInstance.searchBooks(query, earliestPublishYear, latestPublishYear, minRating, maxRating, genres, authors, isbn, oclc, sort, sortDirection, offset, number)
+    val result : kotlin.Any = apiInstance.searchBooks(query, earliestPublishYear, latestPublishYear, minRating, maxRating, genres, authors, isbn, oclc, sort, sortDirection, groupResults, offset, number)
     println(result)
 } catch (e: ClientException) {
     println("4xx response calling DefaultApi#searchBooks")
@@ -230,6 +231,7 @@ Name | Type | Description  | Notes
  **oclc** | **kotlin.String**| Only the book matching the OCLC will be returned | [optional]
  **sort** | **kotlin.String**| The sorting criteria (publish-date or rating). | [optional]
  **sortDirection** | **kotlin.String**| Whether to sort ascending or descending (ASC or DESC). | [optional]
+ **groupResults** | **kotlin.Boolean**| Whether to group similar editions of the same book. | [optional]
  **offset** | **java.math.BigDecimal**| The number of books to skip in range [0,1000] | [optional]
  **number** | **java.math.BigDecimal**| The number of books to return in range [1,100] | [optional]
 

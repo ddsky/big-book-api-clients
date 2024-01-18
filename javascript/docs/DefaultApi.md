@@ -226,6 +226,7 @@ let opts = {
   'oclc': 864418200, // String | Only the book matching the OCLC will be returned
   'sort': rating, // String | The sorting criteria (publish-date or rating).
   'sortDirection': DESC, // String | Whether to sort ascending or descending (ASC or DESC).
+  'groupResults': false, // Boolean | Whether to group similar editions of the same book.
   'offset': 0, // Number | The number of books to skip in range [0,1000]
   'number': 10 // Number | The number of books to return in range [1,100]
 };
@@ -254,6 +255,7 @@ Name | Type | Description  | Notes
  **oclc** | **String**| Only the book matching the OCLC will be returned | [optional] 
  **sort** | **String**| The sorting criteria (publish-date or rating). | [optional] 
  **sortDirection** | **String**| Whether to sort ascending or descending (ASC or DESC). | [optional] 
+ **groupResults** | **Boolean**| Whether to group similar editions of the same book. | [optional] 
  **offset** | **Number**| The number of books to skip in range [0,1000] | [optional] 
  **number** | **Number**| The number of books to return in range [1,100] | [optional] 
 

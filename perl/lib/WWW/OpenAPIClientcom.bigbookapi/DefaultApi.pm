@@ -2,7 +2,7 @@
 
 Big Book API
 
-The world's book wrapped into a single API.
+Big Book API lets you semantically search over 4 million English books by text, genre, author, ISBN, and more. You can also find books that are similar to each other.
 
 The version of the OpenAPI document: 1.0
 Contact: mail@bigbookapi.com
@@ -291,6 +291,7 @@ sub search_authors {
 # @param string $oclc Only the book matching the OCLC will be returned (optional)
 # @param string $sort The sorting criteria (publish-date or rating). (optional)
 # @param string $sort_direction Whether to sort ascending or descending (ASC or DESC). (optional)
+# @param boolean $group_results Whether to group similar editions of the same book. (optional)
 # @param double $offset The number of books to skip in range [0,1000] (optional)
 # @param double $number The number of books to return in range [1,100] (optional)
 {
@@ -348,6 +349,11 @@ sub search_authors {
     'sort_direction' => {
         data_type => 'string',
         description => 'Whether to sort ascending or descending (ASC or DESC).',
+        required => '0',
+    },
+    'group_results' => {
+        data_type => 'boolean',
+        description => 'Whether to group similar editions of the same book.',
         required => '0',
     },
     'offset' => {
@@ -440,6 +446,11 @@ sub search_books {
     # query params
     if ( exists $args{'sort_direction'}) {
         $query_params->{'sort-direction'} = $self->{api_client}->to_query_value($args{'sort_direction'});
+    }
+
+    # query params
+    if ( exists $args{'group_results'}) {
+        $query_params->{'group-results'} = $self->{api_client}->to_query_value($args{'group_results'});
     }
 
     # query params

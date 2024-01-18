@@ -1,7 +1,7 @@
 =begin
 #Big Book API
 
-#The world's book wrapped into a single API.
+#Big Book API lets you semantically search over 4 million English books by text, genre, author, ISBN, and more. You can also find books that are similar to each other.
 
 The version of the OpenAPI document: 1.0
 Contact: mail@bigbookapi.com
@@ -228,6 +228,7 @@ module OpenapiClient
     # @option opts [String] :oclc Only the book matching the OCLC will be returned
     # @option opts [String] :sort The sorting criteria (publish-date or rating).
     # @option opts [String] :sort_direction Whether to sort ascending or descending (ASC or DESC).
+    # @option opts [Boolean] :group_results Whether to group similar editions of the same book.
     # @option opts [Float] :offset The number of books to skip in range [0,1000]
     # @option opts [Float] :number The number of books to return in range [1,100]
     # @return [Object]
@@ -250,6 +251,7 @@ module OpenapiClient
     # @option opts [String] :oclc Only the book matching the OCLC will be returned
     # @option opts [String] :sort The sorting criteria (publish-date or rating).
     # @option opts [String] :sort_direction Whether to sort ascending or descending (ASC or DESC).
+    # @option opts [Boolean] :group_results Whether to group similar editions of the same book.
     # @option opts [Float] :offset The number of books to skip in range [0,1000]
     # @option opts [Float] :number The number of books to return in range [1,100]
     # @return [Array<(Object, Integer, Hash)>] Object data, response status code and response headers
@@ -273,6 +275,7 @@ module OpenapiClient
       query_params[:'oclc'] = opts[:'oclc'] if !opts[:'oclc'].nil?
       query_params[:'sort'] = opts[:'sort'] if !opts[:'sort'].nil?
       query_params[:'sort-direction'] = opts[:'sort_direction'] if !opts[:'sort_direction'].nil?
+      query_params[:'group-results'] = opts[:'group_results'] if !opts[:'group_results'].nil?
       query_params[:'offset'] = opts[:'offset'] if !opts[:'offset'].nil?
       query_params[:'number'] = opts[:'number'] if !opts[:'number'].nil?
 

@@ -36,6 +36,6 @@ trait DataAccessor {
         * 
         * @return A Object
         */
-        def Default_searchBooks(query: Option[String], earliestPublishYear: Option[BigDecimal], latestPublishYear: Option[BigDecimal], minRating: Option[BigDecimal], maxRating: Option[BigDecimal], genres: Option[String], authors: Option[String], isbn: Option[String], oclc: Option[String], sort: Option[String], sortDirection: Option[String], offset: Option[BigDecimal], number: Option[BigDecimal], authParamapiKey: String, authParamheaderApiKey: String): Either[CommonError,Object] = Left(TODO)
+        def Default_searchBooks(query: Option[String], earliestPublishYear: Option[BigDecimal], latestPublishYear: Option[BigDecimal], minRating: Option[BigDecimal], maxRating: Option[BigDecimal], genres: Option[String], authors: Option[String], isbn: Option[String], oclc: Option[String], sort: Option[String], sortDirection: Option[String], groupResults: Option[Boolean], offset: Option[BigDecimal], number: Option[BigDecimal], authParamapiKey: String, authParamheaderApiKey: String): Either[CommonError,Object] = Left(TODO)
 
 }

@@ -8,7 +8,7 @@ defmodule com.bigbookapi.client.Mixfile do
      build_embedded: Mix.env == :prod,
      start_permanent: Mix.env == :prod,
      package: package(),
-     description: "The world&#39;s book wrapped into a single API.",
+     description: "Big Book API lets you semantically search over 4 million English books by text, genre, author, ISBN, and more. You can also find books that are similar to each other.",
      deps: deps()]
   end
 

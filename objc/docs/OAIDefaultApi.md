@@ -221,6 +221,7 @@ Name | Type | Description  | Notes
     oclc: (NSString*) oclc
     sort: (NSString*) sort
     sortDirection: (NSString*) sortDirection
+    groupResults: (NSNumber*) groupResults
     offset: (NSNumber*) offset
     number: (NSNumber*) number
         completionHandler: (void (^)(NSObject* output, NSError* error)) handler;
@@ -256,6 +257,7 @@ NSString* isbn = 9781781257654; // Only the book matching the ISBN-13 will be re
 NSString* oclc = 864418200; // Only the book matching the OCLC will be returned (optional)
 NSString* sort = rating; // The sorting criteria (publish-date or rating). (optional)
 NSString* sortDirection = DESC; // Whether to sort ascending or descending (ASC or DESC). (optional)
+NSNumber* groupResults = false; // Whether to group similar editions of the same book. (optional)
 NSNumber* offset = 0; // The number of books to skip in range [0,1000] (optional)
 NSNumber* number = 10; // The number of books to return in range [1,100] (optional)
 
@@ -273,6 +275,7 @@ OAIDefaultApi*apiInstance = [[OAIDefaultApi alloc] init];
               oclc:oclc
               sort:sort
               sortDirection:sortDirection
+              groupResults:groupResults
               offset:offset
               number:number
           completionHandler: ^(NSObject* output, NSError* error) {
@@ -300,6 +303,7 @@ Name | Type | Description  | Notes
  **oclc** | **NSString***| Only the book matching the OCLC will be returned | [optional] 
  **sort** | **NSString***| The sorting criteria (publish-date or rating). | [optional] 
  **sortDirection** | **NSString***| Whether to sort ascending or descending (ASC or DESC). | [optional] 
+ **groupResults** | **NSNumber***| Whether to group similar editions of the same book. | [optional] 
  **offset** | **NSNumber***| The number of books to skip in range [0,1000] | [optional] 
  **number** | **NSNumber***| The number of books to return in range [1,100] | [optional] 
 

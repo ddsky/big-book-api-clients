@@ -220,7 +220,7 @@ Name | Type | Description  | Notes
 ## `searchBooks()`
 
 ```php
-searchBooks($query, $earliest_publish_year, $latest_publish_year, $min_rating, $max_rating, $genres, $authors, $isbn, $oclc, $sort, $sort_direction, $offset, $number): object
+searchBooks($query, $earliest_publish_year, $latest_publish_year, $min_rating, $max_rating, $genres, $authors, $isbn, $oclc, $sort, $sort_direction, $group_results, $offset, $number): object
 ```
 
 Search Books
@@ -262,11 +262,12 @@ $isbn = 9781781257654; // string | Only the book matching the ISBN-13 will be re
 $oclc = 864418200; // string | Only the book matching the OCLC will be returned
 $sort = rating; // string | The sorting criteria (publish-date or rating).
 $sort_direction = DESC; // string | Whether to sort ascending or descending (ASC or DESC).
+$group_results = false; // bool | Whether to group similar editions of the same book.
 $offset = 0; // float | The number of books to skip in range [0,1000]
 $number = 10; // float | The number of books to return in range [1,100]
 
 try {
-    $result = $apiInstance->searchBooks($query, $earliest_publish_year, $latest_publish_year, $min_rating, $max_rating, $genres, $authors, $isbn, $oclc, $sort, $sort_direction, $offset, $number);
+    $result = $apiInstance->searchBooks($query, $earliest_publish_year, $latest_publish_year, $min_rating, $max_rating, $genres, $authors, $isbn, $oclc, $sort, $sort_direction, $group_results, $offset, $number);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->searchBooks: ', $e->getMessage(), PHP_EOL;
@@ -288,6 +289,7 @@ Name | Type | Description  | Notes
  **oclc** | **string**| Only the book matching the OCLC will be returned | [optional]
  **sort** | **string**| The sorting criteria (publish-date or rating). | [optional]
  **sort_direction** | **string**| Whether to sort ascending or descending (ASC or DESC). | [optional]
+ **group_results** | **bool**| Whether to group similar editions of the same book. | [optional]
  **offset** | **float**| The number of books to skip in range [0,1000] | [optional]
  **number** | **float**| The number of books to return in range [1,100] | [optional]
 

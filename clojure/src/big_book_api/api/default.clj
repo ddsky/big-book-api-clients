@@ -86,11 +86,11 @@
   "Search Books
   Search and filter books based on matching a query, the ISBN, rating, and more fields. The query is semantically parsed using our own large ontology. That means you can search for \"books about dogs\" and will automatically also find books about \"border collies\" and other types without specifying them in the query."
   ([] (search-books-with-http-info nil))
-  ([{:keys [query earliest-publish-year latest-publish-year min-rating max-rating genres authors isbn oclc sort sort-direction offset number]} (s/map-of keyword? any?)]
+  ([{:keys [query earliest-publish-year latest-publish-year min-rating max-rating genres authors isbn oclc sort sort-direction group-results offset number]} (s/map-of keyword? any?)]
    (call-api "/search-books" :get
              {:path-params   {}
               :header-params {}
-              :query-params  {"query" query "earliest-publish-year" earliest-publish-year "latest-publish-year" latest-publish-year "min-rating" min-rating "max-rating" max-rating "genres" genres "authors" authors "isbn" isbn "oclc" oclc "sort" sort "sort-direction" sort-direction "offset" offset "number" number }
+              :query-params  {"query" query "earliest-publish-year" earliest-publish-year "latest-publish-year" latest-publish-year "min-rating" min-rating "max-rating" max-rating "genres" genres "authors" authors "isbn" isbn "oclc" oclc "sort" sort "sort-direction" sort-direction "group-results" group-results "offset" offset "number" number }
               :form-params   {}
               :content-types []
               :accepts       ["application/json"]

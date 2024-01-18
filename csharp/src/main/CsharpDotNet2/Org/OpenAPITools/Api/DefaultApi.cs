@@ -45,10 +45,11 @@ namespace com.bigbookapi
         /// <param name="oclc">Only the book matching the OCLC will be returned</param>
         /// <param name="sort">The sorting criteria (publish-date or rating).</param>
         /// <param name="sortDirection">Whether to sort ascending or descending (ASC or DESC).</param>
+        /// <param name="groupResults">Whether to group similar editions of the same book.</param>
         /// <param name="offset">The number of books to skip in range [0,1000]</param>
         /// <param name="number">The number of books to return in range [1,100]</param>
         /// <returns>Object</returns>
-        Object SearchBooks (string query, decimal? earliestPublishYear, decimal? latestPublishYear, decimal? minRating, decimal? maxRating, string genres, string authors, string isbn, string oclc, string sort, string sortDirection, decimal? offset, decimal? number);
+        Object SearchBooks (string query, decimal? earliestPublishYear, decimal? latestPublishYear, decimal? minRating, decimal? maxRating, string genres, string authors, string isbn, string oclc, string sort, string sortDirection, bool? groupResults, decimal? offset, decimal? number);
     }
 
     /// <summary>
@@ -232,10 +233,11 @@ namespace com.bigbookapi
         /// <param name="oclc">Only the book matching the OCLC will be returned</param>
         /// <param name="sort">The sorting criteria (publish-date or rating).</param>
         /// <param name="sortDirection">Whether to sort ascending or descending (ASC or DESC).</param>
+        /// <param name="groupResults">Whether to group similar editions of the same book.</param>
         /// <param name="offset">The number of books to skip in range [0,1000]</param>
         /// <param name="number">The number of books to return in range [1,100]</param>
         /// <returns>Object</returns>
-        public Object SearchBooks (string query, decimal? earliestPublishYear, decimal? latestPublishYear, decimal? minRating, decimal? maxRating, string genres, string authors, string isbn, string oclc, string sort, string sortDirection, decimal? offset, decimal? number)
+        public Object SearchBooks (string query, decimal? earliestPublishYear, decimal? latestPublishYear, decimal? minRating, decimal? maxRating, string genres, string authors, string isbn, string oclc, string sort, string sortDirection, bool? groupResults, decimal? offset, decimal? number)
         {
             
 
@@ -259,6 +261,7 @@ namespace com.bigbookapi
  if (oclc != null) queryParams.Add("oclc", ApiClient.ParameterToString(oclc)); // query parameter
  if (sort != null) queryParams.Add("sort", ApiClient.ParameterToString(sort)); // query parameter
  if (sortDirection != null) queryParams.Add("sort-direction", ApiClient.ParameterToString(sortDirection)); // query parameter
+ if (groupResults != null) queryParams.Add("group-results", ApiClient.ParameterToString(groupResults)); // query parameter
  if (offset != null) queryParams.Add("offset", ApiClient.ParameterToString(offset)); // query parameter
  if (number != null) queryParams.Add("number", ApiClient.ParameterToString(number)); // query parameter
                                     

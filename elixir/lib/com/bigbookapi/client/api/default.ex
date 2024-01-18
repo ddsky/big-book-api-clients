@@ -136,6 +136,7 @@ defmodule com.bigbookapi.client.Api.Default do
     - :oclc (String.t): Only the book matching the OCLC will be returned
     - :sort (String.t): The sorting criteria (publish-date or rating).
     - :sort_direction (String.t): Whether to sort ascending or descending (ASC or DESC).
+    - :group_results (boolean()): Whether to group similar editions of the same book.
     - :offset (float()): The number of books to skip in range [0,1000]
     - :number (float()): The number of books to return in range [1,100]
   ## Returns
@@ -157,6 +158,7 @@ defmodule com.bigbookapi.client.Api.Default do
       :"oclc" => :query,
       :"sort" => :query,
       :"sort-direction" => :query,
+      :"group-results" => :query,
       :"offset" => :query,
       :"number" => :query
     }

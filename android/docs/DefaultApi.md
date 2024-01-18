@@ -157,7 +157,7 @@ Name | Type | Description  | Notes
 
 ## searchBooks
 
-> Object searchBooks(query, earliestPublishYear, latestPublishYear, minRating, maxRating, genres, authors, isbn, oclc, sort, sortDirection, offset, number)
+> Object searchBooks(query, earliestPublishYear, latestPublishYear, minRating, maxRating, genres, authors, isbn, oclc, sort, sortDirection, groupResults, offset, number)
 
 Search Books
 
@@ -181,10 +181,11 @@ String isbn = 9781781257654; // String | Only the book matching the ISBN-13 will
 String oclc = 864418200; // String | Only the book matching the OCLC will be returned
 String sort = rating; // String | The sorting criteria (publish-date or rating).
 String sortDirection = DESC; // String | Whether to sort ascending or descending (ASC or DESC).
+Boolean groupResults = false; // Boolean | Whether to group similar editions of the same book.
 BigDecimal offset = 0; // BigDecimal | The number of books to skip in range [0,1000]
 BigDecimal number = 10; // BigDecimal | The number of books to return in range [1,100]
 try {
-    Object result = apiInstance.searchBooks(query, earliestPublishYear, latestPublishYear, minRating, maxRating, genres, authors, isbn, oclc, sort, sortDirection, offset, number);
+    Object result = apiInstance.searchBooks(query, earliestPublishYear, latestPublishYear, minRating, maxRating, genres, authors, isbn, oclc, sort, sortDirection, groupResults, offset, number);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling DefaultApi#searchBooks");
@@ -208,6 +209,7 @@ Name | Type | Description  | Notes
  **oclc** | **String**| Only the book matching the OCLC will be returned | [optional] [default to null]
  **sort** | **String**| The sorting criteria (publish-date or rating). | [optional] [default to null]
  **sortDirection** | **String**| Whether to sort ascending or descending (ASC or DESC). | [optional] [default to null]
+ **groupResults** | **Boolean**| Whether to group similar editions of the same book. | [optional] [default to null]
  **offset** | **BigDecimal**| The number of books to skip in range [0,1000] | [optional] [default to null]
  **number** | **BigDecimal**| The number of books to return in range [1,100] | [optional] [default to null]
 

@@ -175,7 +175,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **searchBooks**
-> Object searchBooks(query, earliestPublishYear, latestPublishYear, minRating, maxRating, genres, authors, isbn, oclc, sort, sortDirection, offset, number)
+> Object searchBooks(query, earliestPublishYear, latestPublishYear, minRating, maxRating, genres, authors, isbn, oclc, sort, sortDirection, groupResults, offset, number)
 
 Search Books
 
@@ -205,11 +205,12 @@ final isbn = 9781781257654; // String | Only the book matching the ISBN-13 will 
 final oclc = 864418200; // String | Only the book matching the OCLC will be returned
 final sort = rating; // String | The sorting criteria (publish-date or rating).
 final sortDirection = DESC; // String | Whether to sort ascending or descending (ASC or DESC).
+final groupResults = false; // bool | Whether to group similar editions of the same book.
 final offset = 0; // num | The number of books to skip in range [0,1000]
 final number = 10; // num | The number of books to return in range [1,100]
 
 try {
-    final result = api_instance.searchBooks(query, earliestPublishYear, latestPublishYear, minRating, maxRating, genres, authors, isbn, oclc, sort, sortDirection, offset, number);
+    final result = api_instance.searchBooks(query, earliestPublishYear, latestPublishYear, minRating, maxRating, genres, authors, isbn, oclc, sort, sortDirection, groupResults, offset, number);
     print(result);
 } catch (e) {
     print('Exception when calling DefaultApi->searchBooks: $e\n');
@@ -231,6 +232,7 @@ Name | Type | Description  | Notes
  **oclc** | **String**| Only the book matching the OCLC will be returned | [optional] 
  **sort** | **String**| The sorting criteria (publish-date or rating). | [optional] 
  **sortDirection** | **String**| Whether to sort ascending or descending (ASC or DESC). | [optional] 
+ **groupResults** | **bool**| Whether to group similar editions of the same book. | [optional] 
  **offset** | **num**| The number of books to skip in range [0,1000] | [optional] 
  **number** | **num**| The number of books to return in range [1,100] | [optional] 
 

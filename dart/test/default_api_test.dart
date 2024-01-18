@@ -48,7 +48,7 @@ void main() {
     //
     //  Search and filter books based on matching a query, the ISBN, rating, and more fields. The query is semantically parsed using our own large ontology. That means you can search for \"books about dogs\" and will automatically also find books about \"border collies\" and other types without specifying them in the query. 
     //
-    //Future<Object> searchBooks({ String query, num earliestPublishYear, num latestPublishYear, num minRating, num maxRating, String genres, String authors, String isbn, String oclc, String sort, String sortDirection, num offset, num number }) async
+    //Future<Object> searchBooks({ String query, num earliestPublishYear, num latestPublishYear, num minRating, num maxRating, String genres, String authors, String isbn, String oclc, String sort, String sortDirection, bool groupResults, num offset, num number }) async
     test('test searchBooks', () async {
       // TODO
     });

@@ -283,12 +283,15 @@ class DefaultApi {
   /// * [String] sortDirection:
   ///   Whether to sort ascending or descending (ASC or DESC).
   ///
+  /// * [bool] groupResults:
+  ///   Whether to group similar editions of the same book.
+  ///
   /// * [num] offset:
   ///   The number of books to skip in range [0,1000]
   ///
   /// * [num] number:
   ///   The number of books to return in range [1,100]
-  Future<Response> searchBooksWithHttpInfo({ String query, num earliestPublishYear, num latestPublishYear, num minRating, num maxRating, String genres, String authors, String isbn, String oclc, String sort, String sortDirection, num offset, num number, }) async {
+  Future<Response> searchBooksWithHttpInfo({ String query, num earliestPublishYear, num latestPublishYear, num minRating, num maxRating, String genres, String authors, String isbn, String oclc, String sort, String sortDirection, bool groupResults, num offset, num number, }) async {
     // Verify required params are set.
 
     // ignore: prefer_const_declarations
@@ -333,6 +336,9 @@ class DefaultApi {
     }
     if (sortDirection != null) {
       queryParams.addAll(_convertParametersForCollectionFormat('', 'sort-direction', sortDirection));
+    }
+    if (groupResults != null) {
+      queryParams.addAll(_convertParametersForCollectionFormat('', 'group-results', groupResults));
     }
     if (offset != null) {
       queryParams.addAll(_convertParametersForCollectionFormat('', 'offset', offset));
@@ -396,13 +402,16 @@ class DefaultApi {
   /// * [String] sortDirection:
   ///   Whether to sort ascending or descending (ASC or DESC).
   ///
+  /// * [bool] groupResults:
+  ///   Whether to group similar editions of the same book.
+  ///
   /// * [num] offset:
   ///   The number of books to skip in range [0,1000]
   ///
   /// * [num] number:
   ///   The number of books to return in range [1,100]
-  Future<Object> searchBooks({ String query, num earliestPublishYear, num latestPublishYear, num minRating, num maxRating, String genres, String authors, String isbn, String oclc, String sort, String sortDirection, num offset, num number, }) async {
-    final response = await searchBooksWithHttpInfo( query: query, earliestPublishYear: earliestPublishYear, latestPublishYear: latestPublishYear, minRating: minRating, maxRating: maxRating, genres: genres, authors: authors, isbn: isbn, oclc: oclc, sort: sort, sortDirection: sortDirection, offset: offset, number: number, );
+  Future<Object> searchBooks({ String query, num earliestPublishYear, num latestPublishYear, num minRating, num maxRating, String genres, String authors, String isbn, String oclc, String sort, String sortDirection, bool groupResults, num offset, num number, }) async {
+    final response = await searchBooksWithHttpInfo( query: query, earliestPublishYear: earliestPublishYear, latestPublishYear: latestPublishYear, minRating: minRating, maxRating: maxRating, genres: genres, authors: authors, isbn: isbn, oclc: oclc, sort: sort, sortDirection: sortDirection, groupResults: groupResults, offset: offset, number: number, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

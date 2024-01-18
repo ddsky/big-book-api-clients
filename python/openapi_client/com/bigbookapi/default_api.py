@@ -1,7 +1,7 @@
 """
     Big Book API
 
-    The world's book wrapped into a single API.  # noqa: E501
+    Big Book API lets you semantically search over 4 million English books by text, genre, author, ISBN, and more. You can also find books that are similar to each other.  # noqa: E501
 
     The version of the OpenAPI document: 1.0
     Contact: mail@bigbookapi.com
@@ -229,6 +229,7 @@ class DefaultApi(object):
                     'oclc',
                     'sort',
                     'sort_direction',
+                    'group_results',
                     'offset',
                     'number',
                 ],
@@ -268,6 +269,8 @@ class DefaultApi(object):
                         (str,),
                     'sort_direction':
                         (str,),
+                    'group_results':
+                        (bool,),
                     'offset':
                         (float,),
                     'number':
@@ -285,6 +288,7 @@ class DefaultApi(object):
                     'oclc': 'oclc',
                     'sort': 'sort',
                     'sort_direction': 'sort-direction',
+                    'group_results': 'group-results',
                     'offset': 'offset',
                     'number': 'number',
                 },
@@ -300,6 +304,7 @@ class DefaultApi(object):
                     'oclc': 'query',
                     'sort': 'query',
                     'sort_direction': 'query',
+                    'group_results': 'query',
                     'offset': 'query',
                     'number': 'query',
                 },
@@ -574,6 +579,7 @@ class DefaultApi(object):
             oclc (str): Only the book matching the OCLC will be returned. [optional]
             sort (str): The sorting criteria (publish-date or rating).. [optional]
             sort_direction (str): Whether to sort ascending or descending (ASC or DESC).. [optional]
+            group_results (bool): Whether to group similar editions of the same book.. [optional]
             offset (float): The number of books to skip in range [0,1000]. [optional]
             number (float): The number of books to return in range [1,100]. [optional]
             _return_http_data_only (bool): response data without head status

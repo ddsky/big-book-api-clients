@@ -1,6 +1,6 @@
 /*
  * Big Book API
- * The world's book wrapped into a single API.
+ * Big Book API lets you semantically search over 4 million English books by text, genre, author, ISBN, and more. You can also find books that are similar to each other.
  *
  * The version of the OpenAPI document: 1.0
  * Contact: mail@bigbookapi.com
@@ -575,6 +575,7 @@ public class DefaultApi {
      * @param oclc Only the book matching the OCLC will be returned (optional)
      * @param sort The sorting criteria (publish-date or rating). (optional)
      * @param sortDirection Whether to sort ascending or descending (ASC or DESC). (optional)
+     * @param groupResults Whether to group similar editions of the same book. (optional)
      * @param offset The number of books to skip in range [0,1000] (optional)
      * @param number The number of books to return in range [1,100] (optional)
      * @param _callback Callback for upload/download progress
@@ -593,7 +594,7 @@ public class DefaultApi {
      * Read entire docs
      * @see <a href="https://bigbookapi.com/docs#Search-Books">Search Books Documentation</a>
      */
-    public okhttp3.Call searchBooksCall(String query, BigDecimal earliestPublishYear, BigDecimal latestPublishYear, BigDecimal minRating, BigDecimal maxRating, String genres, String authors, String isbn, String oclc, String sort, String sortDirection, BigDecimal offset, BigDecimal number, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call searchBooksCall(String query, BigDecimal earliestPublishYear, BigDecimal latestPublishYear, BigDecimal minRating, BigDecimal maxRating, String genres, String authors, String isbn, String oclc, String sort, String sortDirection, Boolean groupResults, BigDecimal offset, BigDecimal number, final ApiCallback _callback) throws ApiException {
         String basePath = null;
 
         // Operation Servers
@@ -663,6 +664,10 @@ public class DefaultApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("sort-direction", sortDirection));
         }
 
+        if (groupResults != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("group-results", groupResults));
+        }
+
         if (offset != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("offset", offset));
         }
@@ -692,10 +697,10 @@ public class DefaultApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call searchBooksValidateBeforeCall(String query, BigDecimal earliestPublishYear, BigDecimal latestPublishYear, BigDecimal minRating, BigDecimal maxRating, String genres, String authors, String isbn, String oclc, String sort, String sortDirection, BigDecimal offset, BigDecimal number, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call searchBooksValidateBeforeCall(String query, BigDecimal earliestPublishYear, BigDecimal latestPublishYear, BigDecimal minRating, BigDecimal maxRating, String genres, String authors, String isbn, String oclc, String sort, String sortDirection, Boolean groupResults, BigDecimal offset, BigDecimal number, final ApiCallback _callback) throws ApiException {
         
 
-        okhttp3.Call localVarCall = searchBooksCall(query, earliestPublishYear, latestPublishYear, minRating, maxRating, genres, authors, isbn, oclc, sort, sortDirection, offset, number, _callback);
+        okhttp3.Call localVarCall = searchBooksCall(query, earliestPublishYear, latestPublishYear, minRating, maxRating, genres, authors, isbn, oclc, sort, sortDirection, groupResults, offset, number, _callback);
         return localVarCall;
 
     }
@@ -714,6 +719,7 @@ public class DefaultApi {
      * @param oclc Only the book matching the OCLC will be returned (optional)
      * @param sort The sorting criteria (publish-date or rating). (optional)
      * @param sortDirection Whether to sort ascending or descending (ASC or DESC). (optional)
+     * @param groupResults Whether to group similar editions of the same book. (optional)
      * @param offset The number of books to skip in range [0,1000] (optional)
      * @param number The number of books to return in range [1,100] (optional)
      * @return Object
@@ -731,8 +737,8 @@ public class DefaultApi {
      * Read entire docs
      * @see <a href="https://bigbookapi.com/docs#Search-Books">Search Books Documentation</a>
      */
-    public Object searchBooks(String query, BigDecimal earliestPublishYear, BigDecimal latestPublishYear, BigDecimal minRating, BigDecimal maxRating, String genres, String authors, String isbn, String oclc, String sort, String sortDirection, BigDecimal offset, BigDecimal number) throws ApiException {
-        ApiResponse<Object> localVarResp = searchBooksWithHttpInfo(query, earliestPublishYear, latestPublishYear, minRating, maxRating, genres, authors, isbn, oclc, sort, sortDirection, offset, number);
+    public Object searchBooks(String query, BigDecimal earliestPublishYear, BigDecimal latestPublishYear, BigDecimal minRating, BigDecimal maxRating, String genres, String authors, String isbn, String oclc, String sort, String sortDirection, Boolean groupResults, BigDecimal offset, BigDecimal number) throws ApiException {
+        ApiResponse<Object> localVarResp = searchBooksWithHttpInfo(query, earliestPublishYear, latestPublishYear, minRating, maxRating, genres, authors, isbn, oclc, sort, sortDirection, groupResults, offset, number);
         return localVarResp.getData();
     }
 
@@ -750,6 +756,7 @@ public class DefaultApi {
      * @param oclc Only the book matching the OCLC will be returned (optional)
      * @param sort The sorting criteria (publish-date or rating). (optional)
      * @param sortDirection Whether to sort ascending or descending (ASC or DESC). (optional)
+     * @param groupResults Whether to group similar editions of the same book. (optional)
      * @param offset The number of books to skip in range [0,1000] (optional)
      * @param number The number of books to return in range [1,100] (optional)
      * @return ApiResponse&lt;Object&gt;
@@ -767,8 +774,8 @@ public class DefaultApi {
      * Read entire docs
      * @see <a href="https://bigbookapi.com/docs#Search-Books">Search Books Documentation</a>
      */
-    public ApiResponse<Object> searchBooksWithHttpInfo(String query, BigDecimal earliestPublishYear, BigDecimal latestPublishYear, BigDecimal minRating, BigDecimal maxRating, String genres, String authors, String isbn, String oclc, String sort, String sortDirection, BigDecimal offset, BigDecimal number) throws ApiException {
-        okhttp3.Call localVarCall = searchBooksValidateBeforeCall(query, earliestPublishYear, latestPublishYear, minRating, maxRating, genres, authors, isbn, oclc, sort, sortDirection, offset, number, null);
+    public ApiResponse<Object> searchBooksWithHttpInfo(String query, BigDecimal earliestPublishYear, BigDecimal latestPublishYear, BigDecimal minRating, BigDecimal maxRating, String genres, String authors, String isbn, String oclc, String sort, String sortDirection, Boolean groupResults, BigDecimal offset, BigDecimal number) throws ApiException {
+        okhttp3.Call localVarCall = searchBooksValidateBeforeCall(query, earliestPublishYear, latestPublishYear, minRating, maxRating, genres, authors, isbn, oclc, sort, sortDirection, groupResults, offset, number, null);
         Type localVarReturnType = new TypeToken<Object>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -787,6 +794,7 @@ public class DefaultApi {
      * @param oclc Only the book matching the OCLC will be returned (optional)
      * @param sort The sorting criteria (publish-date or rating). (optional)
      * @param sortDirection Whether to sort ascending or descending (ASC or DESC). (optional)
+     * @param groupResults Whether to group similar editions of the same book. (optional)
      * @param offset The number of books to skip in range [0,1000] (optional)
      * @param number The number of books to return in range [1,100] (optional)
      * @param _callback The callback to be executed when the API call finishes
@@ -805,9 +813,9 @@ public class DefaultApi {
      * Read entire docs
      * @see <a href="https://bigbookapi.com/docs#Search-Books">Search Books Documentation</a>
      */
-    public okhttp3.Call searchBooksAsync(String query, BigDecimal earliestPublishYear, BigDecimal latestPublishYear, BigDecimal minRating, BigDecimal maxRating, String genres, String authors, String isbn, String oclc, String sort, String sortDirection, BigDecimal offset, BigDecimal number, final ApiCallback<Object> _callback) throws ApiException {
+    public okhttp3.Call searchBooksAsync(String query, BigDecimal earliestPublishYear, BigDecimal latestPublishYear, BigDecimal minRating, BigDecimal maxRating, String genres, String authors, String isbn, String oclc, String sort, String sortDirection, Boolean groupResults, BigDecimal offset, BigDecimal number, final ApiCallback<Object> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = searchBooksValidateBeforeCall(query, earliestPublishYear, latestPublishYear, minRating, maxRating, genres, authors, isbn, oclc, sort, sortDirection, offset, number, _callback);
+        okhttp3.Call localVarCall = searchBooksValidateBeforeCall(query, earliestPublishYear, latestPublishYear, minRating, maxRating, genres, authors, isbn, oclc, sort, sortDirection, groupResults, offset, number, _callback);
         Type localVarReturnType = new TypeToken<Object>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

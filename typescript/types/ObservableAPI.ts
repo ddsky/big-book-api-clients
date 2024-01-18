@@ -109,11 +109,12 @@ export class ObservableDefaultApi {
      * @param oclc Only the book matching the OCLC will be returned
      * @param sort The sorting criteria (publish-date or rating).
      * @param sortDirection Whether to sort ascending or descending (ASC or DESC).
+     * @param groupResults Whether to group similar editions of the same book.
      * @param offset The number of books to skip in range [0,1000]
      * @param number The number of books to return in range [1,100]
      */
-    public searchBooks(query?: string, earliestPublishYear?: number, latestPublishYear?: number, minRating?: number, maxRating?: number, genres?: string, authors?: string, isbn?: string, oclc?: string, sort?: string, sortDirection?: string, offset?: number, number?: number, _options?: Configuration): Observable<any> {
-        const requestContextPromise = this.requestFactory.searchBooks(query, earliestPublishYear, latestPublishYear, minRating, maxRating, genres, authors, isbn, oclc, sort, sortDirection, offset, number, _options);
+    public searchBooks(query?: string, earliestPublishYear?: number, latestPublishYear?: number, minRating?: number, maxRating?: number, genres?: string, authors?: string, isbn?: string, oclc?: string, sort?: string, sortDirection?: string, groupResults?: boolean, offset?: number, number?: number, _options?: Configuration): Observable<any> {
+        const requestContextPromise = this.requestFactory.searchBooks(query, earliestPublishYear, latestPublishYear, minRating, maxRating, genres, authors, isbn, oclc, sort, sortDirection, groupResults, offset, number, _options);
 
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);

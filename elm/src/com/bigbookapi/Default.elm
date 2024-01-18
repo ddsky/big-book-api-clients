@@ -1,6 +1,6 @@
 {-
    Big Book API
-   The world's book wrapped into a single API.
+   Big Book API lets you semantically search over 4 million English books by text, genre, author, ISBN, and more. You can also find books that are similar to each other.
 
    The version of the OpenAPI document: 1.0
    Contact: mail@bigbookapi.com
@@ -77,13 +77,13 @@ searchAuthors name_query offset_query number_query =
 
 {-|  Search and filter books based on matching a query, the ISBN, rating, and more fields. The query is semantically parsed using our own large ontology. That means you can search for \"books about dogs\" and will automatically also find books about \"border collies\" and other types without specifying them in the query. 
 -}
-searchBooks : Maybe String -> Maybe Float -> Maybe Float -> Maybe Float -> Maybe Float -> Maybe String -> Maybe String -> Maybe String -> Maybe String -> Maybe String -> Maybe String -> Maybe Float -> Maybe Float -> Api.Request (Dict.Dict String Api.Data.Object)
-searchBooks query_query earliestPublishYear_query latestPublishYear_query minRating_query maxRating_query genres_query authors_query isbn_query oclc_query sort_query sortDirection_query offset_query number_query =
+searchBooks : Maybe String -> Maybe Float -> Maybe Float -> Maybe Float -> Maybe Float -> Maybe String -> Maybe String -> Maybe String -> Maybe String -> Maybe String -> Maybe String -> Maybe Bool -> Maybe Float -> Maybe Float -> Api.Request (Dict.Dict String Api.Data.Object)
+searchBooks query_query earliestPublishYear_query latestPublishYear_query minRating_query maxRating_query genres_query authors_query isbn_query oclc_query sort_query sortDirection_query groupResults_query offset_query number_query =
     Api.request
         "GET"
         "/search-books"
         []
-        [ ( "query", Maybe.map identity query_query ), ( "earliest-publish-year", Maybe.map String.fromFloat earliestPublishYear_query ), ( "latest-publish-year", Maybe.map String.fromFloat latestPublishYear_query ), ( "min-rating", Maybe.map String.fromFloat minRating_query ), ( "max-rating", Maybe.map String.fromFloat maxRating_query ), ( "genres", Maybe.map identity genres_query ), ( "authors", Maybe.map identity authors_query ), ( "isbn", Maybe.map identity isbn_query ), ( "oclc", Maybe.map identity oclc_query ), ( "sort", Maybe.map identity sort_query ), ( "sort-direction", Maybe.map identity sortDirection_query ), ( "offset", Maybe.map String.fromFloat offset_query ), ( "number", Maybe.map String.fromFloat number_query ) ]
+        [ ( "query", Maybe.map identity query_query ), ( "earliest-publish-year", Maybe.map String.fromFloat earliestPublishYear_query ), ( "latest-publish-year", Maybe.map String.fromFloat latestPublishYear_query ), ( "min-rating", Maybe.map String.fromFloat minRating_query ), ( "max-rating", Maybe.map String.fromFloat maxRating_query ), ( "genres", Maybe.map identity genres_query ), ( "authors", Maybe.map identity authors_query ), ( "isbn", Maybe.map identity isbn_query ), ( "oclc", Maybe.map identity oclc_query ), ( "sort", Maybe.map identity sort_query ), ( "sort-direction", Maybe.map identity sortDirection_query ), ( "group-results", Maybe.map (\val -> if val then "true" else "false") groupResults_query ), ( "offset", Maybe.map String.fromFloat offset_query ), ( "number", Maybe.map String.fromFloat number_query ) ]
         []
         Nothing
         (Json.Decode.dict )
