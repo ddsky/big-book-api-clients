@@ -36,9 +36,9 @@ Finally add this to the Gemfile:
 
 ### Install from Git
 
-If the Ruby gem is hosted at a git repository: https://github.com/GIT_USER_ID/GIT_REPO_ID, then add the following in the Gemfile:
+If the Ruby gem is hosted at a git repository: https://github.com/ddsky/big-book-api-clients/tree/main/ruby/, then add the following in the Gemfile:
 
-    gem 'openapi_client', :git => 'https://github.com/GIT_USER_ID/GIT_REPO_ID.git'
+    gem 'openapi_client', :git => 'https://github.com/ddsky/big-book-api-clients/tree/main/ruby/.git'
 
 ### Include the Ruby code directly
 
@@ -104,6 +104,7 @@ Class | Method | HTTP request | Description
 ## Documentation for Authorization
 
 
+Authentication schemes defined for the API:
 ### apiKey
 
 

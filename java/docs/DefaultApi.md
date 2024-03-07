@@ -2,15 +2,15 @@
 
 All URIs are relative to *https://api.bigbookapi.com*
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**findSimilarBooks**](DefaultApi.md#findSimilarBooks) | **GET** /{id}/similar | Find Similar Books
-[**getBookInformation**](DefaultApi.md#getBookInformation) | **GET** /{id} | Get Book Information
-[**searchAuthors**](DefaultApi.md#searchAuthors) | **GET** /search-authors | Search Authors
-[**searchBooks**](DefaultApi.md#searchBooks) | **GET** /search-books | Search Books
+| Method | HTTP request | Description |
+|------------- | ------------- | -------------|
+| [**findSimilarBooks**](DefaultApi.md#findSimilarBooks) | **GET** /{id}/similar | Find Similar Books |
+| [**getBookInformation**](DefaultApi.md#getBookInformation) | **GET** /{id} | Get Book Information |
+| [**searchAuthors**](DefaultApi.md#searchAuthors) | **GET** /search-authors | Search Authors |
+| [**searchBooks**](DefaultApi.md#searchBooks) | **GET** /search-books | Search Books |
 
 
-<a name="findSimilarBooks"></a>
+<a id="findSimilarBooks"></a>
 # **findSimilarBooks**
 > Object findSimilarBooks(id, number)
 
@@ -64,10 +64,10 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **BigDecimal**| The id of the book to which similar books should be found. |
- **number** | **BigDecimal**| The number of similar books to return in range [1,100] | [optional]
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **id** | **BigDecimal**| The id of the book to which similar books should be found. | |
+| **number** | **BigDecimal**| The number of similar books to return in range [1,100] | [optional] |
 
 ### Return type
 
@@ -85,14 +85,14 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Success |  -  |
-**401** | Unauthorized |  -  |
-**402** | Payment Required |  -  |
-**403** | Forbidden |  -  |
-**404** | Not Found |  -  |
-**429** | Too Many Requests |  -  |
+| **200** | Success |  -  |
+| **401** | Unauthorized |  -  |
+| **402** | Payment Required |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **429** | Too Many Requests |  -  |
 
-<a name="getBookInformation"></a>
+<a id="getBookInformation"></a>
 # **getBookInformation**
 > Object getBookInformation(id)
 
@@ -145,9 +145,9 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **BigDecimal**| The id of the book. |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **id** | **BigDecimal**| The id of the book. | |
 
 ### Return type
 
@@ -165,14 +165,14 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Success |  -  |
-**401** | Unauthorized |  -  |
-**402** | Payment Required |  -  |
-**403** | Forbidden |  -  |
-**404** | Not Found |  -  |
-**429** | Too Many Requests |  -  |
+| **200** | Success |  -  |
+| **401** | Unauthorized |  -  |
+| **402** | Payment Required |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **429** | Too Many Requests |  -  |
 
-<a name="searchAuthors"></a>
+<a id="searchAuthors"></a>
 # **searchAuthors**
 > Object searchAuthors(name, offset, number)
 
@@ -227,11 +227,11 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **name** | **String**| The (partial/beginning) name of the author. | [optional]
- **offset** | **BigDecimal**| The number of authors to skip in range [0,100] | [optional]
- **number** | **BigDecimal**| The number of authors to return in range [1,100] | [optional]
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **name** | **String**| The (partial/beginning) name of the author. | [optional] |
+| **offset** | **BigDecimal**| The number of authors to skip in range [0,100] | [optional] |
+| **number** | **BigDecimal**| The number of authors to return in range [1,100] | [optional] |
 
 ### Return type
 
@@ -249,14 +249,14 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Success |  -  |
-**401** | Unauthorized |  -  |
-**402** | Payment Required |  -  |
-**403** | Forbidden |  -  |
-**404** | Not Found |  -  |
-**429** | Too Many Requests |  -  |
+| **200** | Success |  -  |
+| **401** | Unauthorized |  -  |
+| **402** | Payment Required |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **429** | Too Many Requests |  -  |
 
-<a name="searchBooks"></a>
+<a id="searchBooks"></a>
 # **searchBooks**
 > Object searchBooks(query, earliestPublishYear, latestPublishYear, minRating, maxRating, genres, authors, isbn, oclc, sort, sortDirection, groupResults, offset, number)
 
@@ -322,22 +322,22 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **query** | **String**| The search query. | [optional]
- **earliestPublishYear** | **BigDecimal**| The books must have been published after this year. | [optional]
- **latestPublishYear** | **BigDecimal**| The books must have been published before this year. | [optional]
- **minRating** | **BigDecimal**| The minimum rating the book must have gotten in the interval [0,1]. | [optional]
- **maxRating** | **BigDecimal**| The maximum rating the book must have gotten in the interval [0,1]. | [optional]
- **genres** | **String**| A comma-separated list of  genres. Only books from any of the given genres will be returned. | [optional]
- **authors** | **String**| A comma-separated list of author ids or names. Only books from any of the given authors will be returned. You can retrieve author ids from the search authors endpoint. Pass author names is slower and if two authors have the same name you can&#39;t disambiguate. | [optional]
- **isbn** | **String**| Only the book matching the ISBN-13 will be returned | [optional]
- **oclc** | **String**| Only the book matching the OCLC will be returned | [optional]
- **sort** | **String**| The sorting criteria (publish-date or rating). | [optional]
- **sortDirection** | **String**| Whether to sort ascending or descending (ASC or DESC). | [optional]
- **groupResults** | **Boolean**| Whether to group similar editions of the same book. | [optional]
- **offset** | **BigDecimal**| The number of books to skip in range [0,1000] | [optional]
- **number** | **BigDecimal**| The number of books to return in range [1,100] | [optional]
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **query** | **String**| The search query. | [optional] |
+| **earliestPublishYear** | **BigDecimal**| The books must have been published after this year. | [optional] |
+| **latestPublishYear** | **BigDecimal**| The books must have been published before this year. | [optional] |
+| **minRating** | **BigDecimal**| The minimum rating the book must have gotten in the interval [0,1]. | [optional] |
+| **maxRating** | **BigDecimal**| The maximum rating the book must have gotten in the interval [0,1]. | [optional] |
+| **genres** | **String**| A comma-separated list of  genres. Only books from any of the given genres will be returned. | [optional] |
+| **authors** | **String**| A comma-separated list of author ids or names. Only books from any of the given authors will be returned. You can retrieve author ids from the search authors endpoint. Pass author names is slower and if two authors have the same name you can&#39;t disambiguate. | [optional] |
+| **isbn** | **String**| Only the book matching the ISBN-13 will be returned | [optional] |
+| **oclc** | **String**| Only the book matching the OCLC will be returned | [optional] |
+| **sort** | **String**| The sorting criteria (publish-date or rating). | [optional] |
+| **sortDirection** | **String**| Whether to sort ascending or descending (ASC or DESC). | [optional] |
+| **groupResults** | **Boolean**| Whether to group similar editions of the same book. | [optional] |
+| **offset** | **BigDecimal**| The number of books to skip in range [0,1000] | [optional] |
+| **number** | **BigDecimal**| The number of books to return in range [1,100] | [optional] |
 
 ### Return type
 
@@ -355,10 +355,10 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Success |  -  |
-**401** | Unauthorized |  -  |
-**402** | Payment Required |  -  |
-**403** | Forbidden |  -  |
-**404** | Not Found |  -  |
-**429** | Too Many Requests |  -  |
+| **200** | Success |  -  |
+| **401** | Unauthorized |  -  |
+| **402** | Payment Required |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **429** | Too Many Requests |  -  |
 

@@ -1,10 +1,12 @@
+.formatter.exs
 .gitignore
 .openapi-generator-ignore
 README.md
 config/config.exs
-lib/com/bigbookapi/client/api/default.ex
-lib/com/bigbookapi/client/connection.ex
-lib/com/bigbookapi/client/deserializer.ex
-lib/com/bigbookapi/client/request_builder.ex
+config/runtime.exs
+lib/big_book_api/api/default.ex
+lib/big_book_api/connection.ex
+lib/big_book_api/deserializer.ex
+lib/big_book_api/request_builder.ex
 mix.exs
 test/test_helper.exs

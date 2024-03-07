@@ -1,13 +1,13 @@
-# com.bigbookapi.client\DefaultApi
+# \DefaultAPI
 
 All URIs are relative to *https://api.bigbookapi.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**FindSimilarBooks**](DefaultApi.md#FindSimilarBooks) | **Get** /{id}/similar | Find Similar Books
-[**GetBookInformation**](DefaultApi.md#GetBookInformation) | **Get** /{id} | Get Book Information
-[**SearchAuthors**](DefaultApi.md#SearchAuthors) | **Get** /search-authors | Search Authors
-[**SearchBooks**](DefaultApi.md#SearchBooks) | **Get** /search-books | Search Books
+[**FindSimilarBooks**](DefaultAPI.md#FindSimilarBooks) | **Get** /{id}/similar | Find Similar Books
+[**GetBookInformation**](DefaultAPI.md#GetBookInformation) | **Get** /{id} | Get Book Information
+[**SearchAuthors**](DefaultAPI.md#SearchAuthors) | **Get** /search-authors | Search Authors
+[**SearchBooks**](DefaultAPI.md#SearchBooks) | **Get** /search-books | Search Books
 
 
 
@@ -25,25 +25,25 @@ Find Similar Books
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/ddsky/big-book-api-clients/tree/main/go/"
 )
 
 func main() {
-    id := float32(8302059) // float32 | The id of the book to which similar books should be found.
-    number := float32(10) // float32 | The number of similar books to return in range [1,100] (optional)
+	id := float32(8302059) // float32 | The id of the book to which similar books should be found.
+	number := float32(10) // float32 | The number of similar books to return in range [1,100] (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DefaultApi.FindSimilarBooks(context.Background(), id).Number(number).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DefaultApi.FindSimilarBooks``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `FindSimilarBooks`: map[string]interface{}
-    fmt.Fprintf(os.Stdout, "Response from `DefaultApi.FindSimilarBooks`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.DefaultAPI.FindSimilarBooks(context.Background(), id).Number(number).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.FindSimilarBooks``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `FindSimilarBooks`: map[string]interface{}
+	fmt.Fprintf(os.Stdout, "Response from `DefaultAPI.FindSimilarBooks`: %v\n", resp)
 }
 ```
 
@@ -97,24 +97,24 @@ Get Book Information
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/ddsky/big-book-api-clients/tree/main/go/"
 )
 
 func main() {
-    id := float32(15912250) // float32 | The id of the book.
+	id := float32(15912250) // float32 | The id of the book.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DefaultApi.GetBookInformation(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DefaultApi.GetBookInformation``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetBookInformation`: map[string]interface{}
-    fmt.Fprintf(os.Stdout, "Response from `DefaultApi.GetBookInformation`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.DefaultAPI.GetBookInformation(context.Background(), id).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.GetBookInformation``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetBookInformation`: map[string]interface{}
+	fmt.Fprintf(os.Stdout, "Response from `DefaultAPI.GetBookInformation`: %v\n", resp)
 }
 ```
 
@@ -167,26 +167,26 @@ Search Authors
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/ddsky/big-book-api-clients/tree/main/go/"
 )
 
 func main() {
-    name := "Morgan Housel" // string | The (partial/beginning) name of the author. (optional)
-    offset := float32(0) // float32 | The number of authors to skip in range [0,100] (optional)
-    number := float32(10) // float32 | The number of authors to return in range [1,100] (optional)
+	name := "Morgan Housel" // string | The (partial/beginning) name of the author. (optional)
+	offset := float32(0) // float32 | The number of authors to skip in range [0,100] (optional)
+	number := float32(10) // float32 | The number of authors to return in range [1,100] (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DefaultApi.SearchAuthors(context.Background()).Name(name).Offset(offset).Number(number).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DefaultApi.SearchAuthors``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `SearchAuthors`: map[string]interface{}
-    fmt.Fprintf(os.Stdout, "Response from `DefaultApi.SearchAuthors`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.DefaultAPI.SearchAuthors(context.Background()).Name(name).Offset(offset).Number(number).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.SearchAuthors``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `SearchAuthors`: map[string]interface{}
+	fmt.Fprintf(os.Stdout, "Response from `DefaultAPI.SearchAuthors`: %v\n", resp)
 }
 ```
 
@@ -237,37 +237,37 @@ Search Books
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/ddsky/big-book-api-clients/tree/main/go/"
 )
 
 func main() {
-    query := "books about wizards" // string | The search query. (optional)
-    earliestPublishYear := float32(2022) // float32 | The books must have been published after this year. (optional)
-    latestPublishYear := float32(2023) // float32 | The books must have been published before this year. (optional)
-    minRating := float32(0.8) // float32 | The minimum rating the book must have gotten in the interval [0,1]. (optional)
-    maxRating := float32(0.99) // float32 | The maximum rating the book must have gotten in the interval [0,1]. (optional)
-    genres := "nonfiction" // string | A comma-separated list of  genres. Only books from any of the given genres will be returned. (optional)
-    authors := "J.K. Rowling" // string | A comma-separated list of author ids or names. Only books from any of the given authors will be returned. You can retrieve author ids from the search authors endpoint. Pass author names is slower and if two authors have the same name you can't disambiguate. (optional)
-    isbn := "9781781257654" // string | Only the book matching the ISBN-13 will be returned (optional)
-    oclc := "864418200" // string | Only the book matching the OCLC will be returned (optional)
-    sort := "rating" // string | The sorting criteria (publish-date or rating). (optional)
-    sortDirection := "DESC" // string | Whether to sort ascending or descending (ASC or DESC). (optional)
-    groupResults := false // bool | Whether to group similar editions of the same book. (optional)
-    offset := float32(0) // float32 | The number of books to skip in range [0,1000] (optional)
-    number := float32(10) // float32 | The number of books to return in range [1,100] (optional)
+	query := "books about wizards" // string | The search query. (optional)
+	earliestPublishYear := float32(2022) // float32 | The books must have been published after this year. (optional)
+	latestPublishYear := float32(2023) // float32 | The books must have been published before this year. (optional)
+	minRating := float32(0.8) // float32 | The minimum rating the book must have gotten in the interval [0,1]. (optional)
+	maxRating := float32(0.99) // float32 | The maximum rating the book must have gotten in the interval [0,1]. (optional)
+	genres := "nonfiction" // string | A comma-separated list of  genres. Only books from any of the given genres will be returned. (optional)
+	authors := "J.K. Rowling" // string | A comma-separated list of author ids or names. Only books from any of the given authors will be returned. You can retrieve author ids from the search authors endpoint. Pass author names is slower and if two authors have the same name you can't disambiguate. (optional)
+	isbn := "9781781257654" // string | Only the book matching the ISBN-13 will be returned (optional)
+	oclc := "864418200" // string | Only the book matching the OCLC will be returned (optional)
+	sort := "rating" // string | The sorting criteria (publish-date or rating). (optional)
+	sortDirection := "DESC" // string | Whether to sort ascending or descending (ASC or DESC). (optional)
+	groupResults := false // bool | Whether to group similar editions of the same book. (optional)
+	offset := float32(0) // float32 | The number of books to skip in range [0,1000] (optional)
+	number := float32(10) // float32 | The number of books to return in range [1,100] (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DefaultApi.SearchBooks(context.Background()).Query(query).EarliestPublishYear(earliestPublishYear).LatestPublishYear(latestPublishYear).MinRating(minRating).MaxRating(maxRating).Genres(genres).Authors(authors).Isbn(isbn).Oclc(oclc).Sort(sort).SortDirection(sortDirection).GroupResults(groupResults).Offset(offset).Number(number).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DefaultApi.SearchBooks``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `SearchBooks`: map[string]interface{}
-    fmt.Fprintf(os.Stdout, "Response from `DefaultApi.SearchBooks`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.DefaultAPI.SearchBooks(context.Background()).Query(query).EarliestPublishYear(earliestPublishYear).LatestPublishYear(latestPublishYear).MinRating(minRating).MaxRating(maxRating).Genres(genres).Authors(authors).Isbn(isbn).Oclc(oclc).Sort(sort).SortDirection(sortDirection).GroupResults(groupResults).Offset(offset).Number(number).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.SearchBooks``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `SearchBooks`: map[string]interface{}
+	fmt.Fprintf(os.Stdout, "Response from `DefaultAPI.SearchBooks`: %v\n", resp)
 }
 ```
 

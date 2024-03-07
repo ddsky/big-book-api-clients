@@ -34,7 +34,7 @@ class Example : public QObject {
     Q_OBJECT
     double create();
     double create();
-public slots:
+public Q_SLOTS:
    void exampleFunction1();
 };
 

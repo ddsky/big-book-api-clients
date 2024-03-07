@@ -1,5 +1,4 @@
-import { ResponseContext, RequestContext, HttpFile } from '../http/http';
-import * as models from '../models/all';
+import { ResponseContext, RequestContext, HttpFile, HttpInfo } from '../http/http';
 import { Configuration} from '../configuration'
 
 
@@ -89,7 +88,7 @@ export interface DefaultApiSearchBooksRequest {
      */
     genres?: string
     /**
-     * A comma-separated list of author ids or names. Only books from any of the given authors will be returned. You can retrieve author ids from the search authors endpoint. Pass author names is slower and if two authors have the same name you can&#39;t disambiguate.
+     * A comma-separated list of author ids or names. Only books from any of the given authors will be returned. You can retrieve author ids from the search authors endpoint. Pass author names is slower and if two authors have the same name you can\&#39;t disambiguate.
      * @type string
      * @memberof DefaultApisearchBooks
      */
@@ -150,8 +149,26 @@ export class ObjectDefaultApi {
      * Find Similar Books
      * @param param the request object
      */
+    public findSimilarBooksWithHttpInfo(param: DefaultApiFindSimilarBooksRequest, options?: Configuration): Promise<HttpInfo<any>> {
+        return this.api.findSimilarBooksWithHttpInfo(param.id, param.number,  options).toPromise();
+    }
+
+    /**
+     *  Find books that are similar to the given book. 
+     * Find Similar Books
+     * @param param the request object
+     */
     public findSimilarBooks(param: DefaultApiFindSimilarBooksRequest, options?: Configuration): Promise<any> {
         return this.api.findSimilarBooks(param.id, param.number,  options).toPromise();
+    }
+
+    /**
+     *  Get all information about a certain book. 
+     * Get Book Information
+     * @param param the request object
+     */
+    public getBookInformationWithHttpInfo(param: DefaultApiGetBookInformationRequest, options?: Configuration): Promise<HttpInfo<any>> {
+        return this.api.getBookInformationWithHttpInfo(param.id,  options).toPromise();
     }
 
     /**
@@ -164,12 +181,30 @@ export class ObjectDefaultApi {
     }
 
     /**
-     *  Search for book authors by name or partial name. The response contains the author's name and their id. You can then use the id in the book search. 
+     *  Search for book authors by name or partial name. The response contains the author\'s name and their id. You can then use the id in the book search. 
+     * Search Authors
+     * @param param the request object
+     */
+    public searchAuthorsWithHttpInfo(param: DefaultApiSearchAuthorsRequest = {}, options?: Configuration): Promise<HttpInfo<any>> {
+        return this.api.searchAuthorsWithHttpInfo(param.name, param.offset, param.number,  options).toPromise();
+    }
+
+    /**
+     *  Search for book authors by name or partial name. The response contains the author\'s name and their id. You can then use the id in the book search. 
      * Search Authors
      * @param param the request object
      */
     public searchAuthors(param: DefaultApiSearchAuthorsRequest = {}, options?: Configuration): Promise<any> {
         return this.api.searchAuthors(param.name, param.offset, param.number,  options).toPromise();
+    }
+
+    /**
+     *  Search and filter books based on matching a query, the ISBN, rating, and more fields. The query is semantically parsed using our own large ontology. That means you can search for \"books about dogs\" and will automatically also find books about \"border collies\" and other types without specifying them in the query. 
+     * Search Books
+     * @param param the request object
+     */
+    public searchBooksWithHttpInfo(param: DefaultApiSearchBooksRequest = {}, options?: Configuration): Promise<HttpInfo<any>> {
+        return this.api.searchBooksWithHttpInfo(param.query, param.earliestPublishYear, param.latestPublishYear, param.minRating, param.maxRating, param.genres, param.authors, param.isbn, param.oclc, param.sort, param.sortDirection, param.groupResults, param.offset, param.number,  options).toPromise();
     }
 
     /**

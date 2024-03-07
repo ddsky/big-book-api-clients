@@ -1,7 +1,10 @@
 [package]
-name = "openapi"
-version = "1.0"
-authors = ["OpenAPI Generator team and contributors"]
+name = "bigbookapi"
+version = "1.0.1"
+authors = ["mail@bigbookapi.com"]
+description = "Big Book API lets you semantically search over 4 million English books by text, genre, author, ISBN, and more. You can also find books that are similar to each other."
+# Override this license by providing a License Object in the OpenAPI.
+license = "Unlicense"
 edition = "2018"
 
 [dependencies]
@@ -9,8 +12,7 @@ serde = "^1.0"
 serde_derive = "^1.0"
 serde_json = "^1.0"
 url = "^2.2"
+uuid = { version = "^1.0", features = ["serde", "v4"] }
 [dependencies.reqwest]
 version = "^0.11"
 features = ["json", "multipart"]
-
-[dev-dependencies]

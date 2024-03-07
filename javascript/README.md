@@ -56,11 +56,11 @@ npm run build
 
 #### git
 
-If the library is hosted at a git repository, e.g.https://github.com/GIT_USER_ID/GIT_REPO_ID
+If the library is hosted at a git repository, e.g.https://github.com/ddsky/big-book-api-clients/tree/main/javascript/
 then install it via:
 
 ```shell
-    npm install GIT_USER_ID/GIT_REPO_ID --save
+    npm install ddsky/big-book-api-clients/tree/main/javascript/ --save
 ```
 
 ### For browser
@@ -147,15 +147,13 @@ Class | Method | HTTP request | Description
 ## Documentation for Authorization
 
 
-
+Authentication schemes defined for the API:
 ### apiKey
 
 
 - **Type**: API key
 - **API key parameter name**: api-key
 - **Location**: URL query string
-
-
 
 ### headerApiKey
 

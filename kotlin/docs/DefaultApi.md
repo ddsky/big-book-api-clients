@@ -10,7 +10,7 @@ Method | HTTP request | Description
 [**searchBooks**](DefaultApi.md#searchBooks) | **GET** /search-books | Search Books
 
 
-<a name="findSimilarBooks"></a>
+<a id="findSimilarBooks"></a>
 # **findSimilarBooks**
 > kotlin.Any findSimilarBooks(id, number)
 
@@ -21,8 +21,8 @@ Find Similar Books
 ### Example
 ```kotlin
 // Import classes:
-//import org.openapitools.client.infrastructure.*
-//import com.bigbookapi.client.model.*
+//import bigbookapi.infrastructure.*
+//import bigbookapi.models.*
 
 val apiInstance = DefaultApi()
 val id : java.math.BigDecimal = 8302059 // java.math.BigDecimal | The id of the book to which similar books should be found.
@@ -65,7 +65,7 @@ Configure headerApiKey:
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-<a name="getBookInformation"></a>
+<a id="getBookInformation"></a>
 # **getBookInformation**
 > kotlin.Any getBookInformation(id)
 
@@ -76,8 +76,8 @@ Get Book Information
 ### Example
 ```kotlin
 // Import classes:
-//import org.openapitools.client.infrastructure.*
-//import com.bigbookapi.client.model.*
+//import bigbookapi.infrastructure.*
+//import bigbookapi.models.*
 
 val apiInstance = DefaultApi()
 val id : java.math.BigDecimal = 15912250 // java.math.BigDecimal | The id of the book.
@@ -118,7 +118,7 @@ Configure headerApiKey:
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-<a name="searchAuthors"></a>
+<a id="searchAuthors"></a>
 # **searchAuthors**
 > kotlin.Any searchAuthors(name, offset, number)
 
@@ -129,8 +129,8 @@ Search Authors
 ### Example
 ```kotlin
 // Import classes:
-//import org.openapitools.client.infrastructure.*
-//import com.bigbookapi.client.model.*
+//import bigbookapi.infrastructure.*
+//import bigbookapi.models.*
 
 val apiInstance = DefaultApi()
 val name : kotlin.String = Morgan Housel // kotlin.String | The (partial/beginning) name of the author.
@@ -175,7 +175,7 @@ Configure headerApiKey:
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-<a name="searchBooks"></a>
+<a id="searchBooks"></a>
 # **searchBooks**
 > kotlin.Any searchBooks(query, earliestPublishYear, latestPublishYear, minRating, maxRating, genres, authors, isbn, oclc, sort, sortDirection, groupResults, offset, number)
 
@@ -186,8 +186,8 @@ Search Books
 ### Example
 ```kotlin
 // Import classes:
-//import org.openapitools.client.infrastructure.*
-//import com.bigbookapi.client.model.*
+//import bigbookapi.infrastructure.*
+//import bigbookapi.models.*
 
 val apiInstance = DefaultApi()
 val query : kotlin.String = books about wizards // kotlin.String | The search query.

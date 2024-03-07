@@ -1,3 +1,4 @@
+.github/workflows/maven.yml
 .gitignore
 .openapi-generator-ignore
 .travis.yml
@@ -33,4 +34,5 @@ src/main/java/com/bigbookapi/client/auth/ApiKeyAuth.java
 src/main/java/com/bigbookapi/client/auth/Authentication.java
 src/main/java/com/bigbookapi/client/auth/HttpBasicAuth.java
 src/main/java/com/bigbookapi/client/auth/HttpBearerAuth.java
+src/main/java/com/bigbookapi/client/model/AbstractOpenApiSchema.java
 src/test/java/com/bigbookapi/DefaultApiTest.java

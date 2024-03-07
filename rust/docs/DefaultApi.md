@@ -1,4 +1,4 @@
-# com.bigbookapi.client\DefaultApi
+# \DefaultApi
 
 All URIs are relative to *https://api.bigbookapi.com*
 

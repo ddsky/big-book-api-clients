@@ -1,6 +1,9 @@
 .openapi-generator-ignore
 README.md
 client/CMakeLists.txt
+client/Config.cmake.in
+client/OAIDefaultApi.cpp
+client/OAIDefaultApi.h
 client/OAIEnum.h
 client/OAIHelpers.cpp
 client/OAIHelpers.h
@@ -14,5 +17,3 @@ client/OAIObject.h
 client/OAIServerConfiguration.h
 client/OAIServerVariable.h
 client/client.pri
-client/com.bigbookapi/OAIDefaultApi.cpp
-client/com.bigbookapi/OAIDefaultApi.h

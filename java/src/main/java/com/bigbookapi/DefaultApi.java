@@ -94,7 +94,6 @@ public class DefaultApi {
      */
     public okhttp3.Call findSimilarBooksCall(BigDecimal id, BigDecimal number, final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -111,7 +110,7 @@ public class DefaultApi {
 
         // create path and map variables
         String localVarPath = "/{id}/similar"
-            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -132,7 +131,6 @@ public class DefaultApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -145,15 +143,12 @@ public class DefaultApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call findSimilarBooksValidateBeforeCall(BigDecimal id, BigDecimal number, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling findSimilarBooks(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = findSimilarBooksCall(id, number, _callback);
-        return localVarCall;
+        return findSimilarBooksCall(id, number, _callback);
 
     }
 
@@ -257,7 +252,6 @@ public class DefaultApi {
      */
     public okhttp3.Call getBookInformationCall(BigDecimal id, final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -274,7 +268,7 @@ public class DefaultApi {
 
         // create path and map variables
         String localVarPath = "/{id}"
-            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -291,7 +285,6 @@ public class DefaultApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -304,15 +297,12 @@ public class DefaultApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getBookInformationValidateBeforeCall(BigDecimal id, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling getBookInformation(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = getBookInformationCall(id, _callback);
-        return localVarCall;
+        return getBookInformationCall(id, _callback);
 
     }
 
@@ -415,7 +405,6 @@ public class DefaultApi {
      */
     public okhttp3.Call searchAuthorsCall(String name, BigDecimal offset, BigDecimal number, final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -460,7 +449,6 @@ public class DefaultApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -473,10 +461,7 @@ public class DefaultApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call searchAuthorsValidateBeforeCall(String name, BigDecimal offset, BigDecimal number, final ApiCallback _callback) throws ApiException {
-        
-
-        okhttp3.Call localVarCall = searchAuthorsCall(name, offset, number, _callback);
-        return localVarCall;
+        return searchAuthorsCall(name, offset, number, _callback);
 
     }
 
@@ -596,7 +581,6 @@ public class DefaultApi {
      */
     public okhttp3.Call searchBooksCall(String query, BigDecimal earliestPublishYear, BigDecimal latestPublishYear, BigDecimal minRating, BigDecimal maxRating, String genres, String authors, String isbn, String oclc, String sort, String sortDirection, Boolean groupResults, BigDecimal offset, BigDecimal number, final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -685,7 +669,6 @@ public class DefaultApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -698,10 +681,7 @@ public class DefaultApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call searchBooksValidateBeforeCall(String query, BigDecimal earliestPublishYear, BigDecimal latestPublishYear, BigDecimal minRating, BigDecimal maxRating, String genres, String authors, String isbn, String oclc, String sort, String sortDirection, Boolean groupResults, BigDecimal offset, BigDecimal number, final ApiCallback _callback) throws ApiException {
-        
-
-        okhttp3.Call localVarCall = searchBooksCall(query, earliestPublishYear, latestPublishYear, minRating, maxRating, genres, authors, isbn, oclc, sort, sortDirection, groupResults, offset, number, _callback);
-        return localVarCall;
+        return searchBooksCall(query, earliestPublishYear, latestPublishYear, minRating, maxRating, genres, authors, isbn, oclc, sort, sortDirection, groupResults, offset, number, _callback);
 
     }
 

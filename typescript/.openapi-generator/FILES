@@ -2,10 +2,10 @@
 .openapi-generator-ignore
 DefaultApi.md
 README.md
+apis/DefaultApi.ts
 apis/baseapi.ts
 apis/exception.ts
 auth/auth.ts
-com/bigbookapi/apis/DefaultApi.ts
 configuration.ts
 git_push.sh
 http/http.ts

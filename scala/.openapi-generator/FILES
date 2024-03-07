@@ -6,6 +6,6 @@ project/plugins.sbt
 sbt
 src/main/scala/DataAccessor.scala
 src/main/scala/Server.scala
-src/main/scala/com/bigbookapi/DefaultApi.scala
 src/main/scala/endpoint.scala
 src/main/scala/errors.scala
+src/main/scala/org/openapitools/apis/DefaultApi.scala

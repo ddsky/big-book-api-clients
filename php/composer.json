@@ -1,5 +1,5 @@
 {
-    "version": "1.0",
+    "version": "1.0.1",
     "description": "Big Book API lets you semantically search over 4 million English books by text, genre, author, ISBN, and more. You can also find books that are similar to each other.",
     "keywords": [
         "openapitools",
@@ -14,12 +14,12 @@
     "license": "unlicense",
     "authors": [
         {
-            "name": "OpenAPI-Generator contributors",
+            "name": "OpenAPI",
             "homepage": "https://openapi-generator.tech"
         }
     ],
     "require": {
-        "php": "^7.3 || ^8.0",
+        "php": "^7.4 || ^8.0",
         "ext-curl": "*",
         "ext-json": "*",
         "ext-mbstring": "*",
@@ -28,12 +28,12 @@
     },
     "require-dev": {
         "phpunit/phpunit": "^8.0 || ^9.0",
-        "friendsofphp/php-cs-fixer": "^2.12"
+        "friendsofphp/php-cs-fixer": "^3.5"
     },
     "autoload": {
-        "psr-4": { "com.bigbookapi.client\\" : "lib/" }
+        "psr-4": { "OpenAPI\\Client\\" : "lib/" }
     },
     "autoload-dev": {
-        "psr-4": { "com.bigbookapi.client\\Test\\" : "test/" }
+        "psr-4": { "OpenAPI\\Client\\Test\\" : "test/" }
     }
 }

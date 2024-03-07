@@ -1,9 +1,9 @@
 {
   "name": "big_book_api",
   "version": "1.0",
-  "description": "Big_Book_API_lets_you_semantically_search_over_4_million_English_books_by_text_genre_author_ISBN_and_more__You_can_also_find_books_that_are_similar_to_each_other_",
+  "description": "Big Book API lets you semantically search over 4 million English books by text, genre, author, ISBN, and more. You can also find books that are similar to each other.",
   "license": "Unlicense",
-  "main": "dist/com.bigbookapi.client/index.js",
+  "main": "dist/index.js",
   "scripts": {
     "build": "babel src -d dist",
     "prepare": "npm run build",

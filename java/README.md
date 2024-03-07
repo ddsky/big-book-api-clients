@@ -2,7 +2,7 @@
 
 Big Book API
 - API version: 1.0
-  - Build date: 2024-01-18T02:20:21.157+01:00[Europe/Berlin]
+  - Build date: 2024-03-08T00:34:35.714775800+01:00[Europe/Berlin]
 
 Big Book API lets you semantically search over 4 million English books by text, genre, author, ISBN, and more. You can also find books that are similar to each other.
 
@@ -40,7 +40,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>com.bigbookapi</groupId>
   <artifactId>java-client</artifactId>
-  <version>1.0</version>
+  <version>1.0.1</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -56,7 +56,7 @@ Add this dependency to your project's build file:
   }
 
   dependencies {
-     implementation "com.bigbookapi:java-client:1.0"
+     implementation "com.bigbookapi:java-client:1.0.1"
   }
 ```
 
@@ -70,7 +70,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-* `target/java-client-1.0.jar`
+* `target/java-client-1.0.1.jar`
 * `target/lib/*.jar`
 
 ## Getting Started
@@ -138,15 +138,19 @@ Class | Method | HTTP request | Description
 
 
 
+<a id="documentation-for-authorization"></a>
 ## Documentation for Authorization
 
+
 Authentication schemes defined for the API:
+<a id="apiKey"></a>
 ### apiKey
 
 - **Type**: API key
 - **API key parameter name**: api-key
 - **Location**: URL query string
 
+<a id="headerApiKey"></a>
 ### headerApiKey
 
 - **Type**: API key

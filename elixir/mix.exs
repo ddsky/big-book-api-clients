@@ -1,15 +1,19 @@
-defmodule com.bigbookapi.client.Mixfile do
+defmodule BigBookAPI.Mixfile do
   use Mix.Project
 
   def project do
-    [app: :com/bigbookapi/client,
-     version: "1.0",
-     elixir: "~> 1.6",
-     build_embedded: Mix.env == :prod,
-     start_permanent: Mix.env == :prod,
-     package: package(),
-     description: "Big Book API lets you semantically search over 4 million English books by text, genre, author, ISBN, and more. You can also find books that are similar to each other.",
-     deps: deps()]
+    [
+      app: :bigbookapi,
+      version: "1.0",
+      elixir: "~> 1.10",
+      build_embedded: Mix.env() == :prod,
+      start_permanent: Mix.env() == :prod,
+      package: package(),
+      description: """
+      Big Book API lets you semantically search over 4 million English books by text, genre, author, ISBN, and more. You can also find books that are similar to each other.
+      """,
+      deps: deps()
+    ]
   end
 
   # Configuration for the OTP application
@@ -31,16 +35,17 @@ defmodule com.bigbookapi.client.Mixfile do
   # Type "mix help deps" for more examples and options
   defp deps do
     [
-      {:tesla, "~> 1.2"},
-      {:poison, "~> 3.0"}
+      {:tesla, "~> 1.7"},
+      {:jason, "~> 1.4"},
+      {:ex_doc, "~> 0.30", only: :dev, runtime: false},
+      {:dialyxir, "~> 1.3", only: [:dev, :test], runtime: false}
     ]
   end
 
-   defp package() do
-    [
-      name: "com/bigbookapi/client",
-      files: ~w(lib mix.exs README* LICENSE*),
-      licenses: [""]
-    ]
+   defp package do
+      [
+        name: "bigbookapi",
+        files: ~w(.formatter.exs config lib mix.exs README* LICENSE*),
+      ]
   end
 end

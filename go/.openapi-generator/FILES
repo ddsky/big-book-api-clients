@@ -6,9 +6,10 @@ api/openapi.yaml
 api_default.go
 client.go
 configuration.go
-docs/DefaultApi.md
+docs/DefaultAPI.md
 git_push.sh
 go.mod
 go.sum
 response.go
+test/api_default_test.go
 utils.go

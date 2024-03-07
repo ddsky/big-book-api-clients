@@ -1,6 +1,6 @@
 .openapi-generator-ignore
 README.md
 rebar.config
-src/openapi.app.src
-src/openapi_default_api.erl
-src/openapi_utils.erl
+src/bigbookapi.app.src
+src/bigbookapi_default_api.erl
+src/bigbookapi_utils.erl

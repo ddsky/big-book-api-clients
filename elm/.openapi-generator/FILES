@@ -3,6 +3,6 @@
 README.md
 elm.json
 src/Api.elm
+src/Api/Data.elm
+src/Api/Request/Default.elm
 src/Api/Time.elm
-src/com/bigbookapi/Default.elm
-src/com/bigbookapi/client/model/Data.elm

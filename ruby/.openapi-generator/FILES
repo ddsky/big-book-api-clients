@@ -1,4 +1,5 @@
 .gitignore
+.gitlab-ci.yml
 .openapi-generator-ignore
 .rspec
 .rubocop.yml
@@ -16,6 +17,4 @@ lib/openapi_client/configuration.rb
 lib/openapi_client/version.rb
 openapi_client.gemspec
 spec/api/default_api_spec.rb
-spec/api_client_spec.rb
-spec/configuration_spec.rb
 spec/spec_helper.rb

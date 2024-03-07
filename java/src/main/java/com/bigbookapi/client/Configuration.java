@@ -13,8 +13,10 @@
 
 package com.bigbookapi.client;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-01-18T02:20:21.157+01:00[Europe/Berlin]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-03-08T00:34:35.714775800+01:00[Europe/Berlin]")
 public class Configuration {
+    public static final String VERSION = "1.0.1";
+
     private static ApiClient defaultApiClient = new ApiClient();
 
     /**

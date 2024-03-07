@@ -3,9 +3,9 @@ info:
   contact:
     email: mail@bigbookapi.com
     name: David Urbansky
-  description: Big Book API lets you semantically search over 4 million English books
-    by text, genre, author, ISBN, and more. You can also find books that are similar
-    to each other.
+  description: "Big Book API lets you semantically search over 4 million English books\
+    \ by text, genre, author, ISBN, and more. You can also find books that are similar\
+    \ to each other."
   termsOfService: https://bigbookapi.com/terms
   title: Big Book API
   version: "1.0"
@@ -18,11 +18,11 @@ paths:
   /search-books:
     get:
       deprecated: false
-      description: ' Search and filter books based on matching a query, the ISBN,
-        rating, and more fields. The query is semantically parsed using our own large
-        ontology. That means you can search for "books about dogs" and will automatically
-        also find books about "border collies" and other types without specifying
-        them in the query. '
+      description: " Search and filter books based on matching a query, the ISBN,\
+        \ rating, and more fields. The query is semantically parsed using our own\
+        \ large ontology. That means you can search for \"books about dogs\" and will\
+        \ automatically also find books about \"border collies\" and other types without\
+        \ specifying them in the query. "
       externalDocs:
         description: Read entire docs
         url: https://bigbookapi.com/docs#Search-Books
@@ -55,8 +55,8 @@ paths:
           example: 2023
           type: number
         style: form
-      - description: The minimum rating the book must have gotten in the interval
-          [0,1].
+      - description: "The minimum rating the book must have gotten in the interval\
+          \ [0,1]."
         explode: false
         in: query
         name: min-rating
@@ -65,8 +65,8 @@ paths:
           example: 0.8
           type: number
         style: form
-      - description: The maximum rating the book must have gotten in the interval
-          [0,1].
+      - description: "The maximum rating the book must have gotten in the interval\
+          \ [0,1]."
         explode: false
         in: query
         name: max-rating
@@ -142,7 +142,7 @@ paths:
           example: false
           type: boolean
         style: form
-      - description: The number of books to skip in range [0,1000]
+      - description: "The number of books to skip in range [0,1000]"
         explode: false
         in: query
         name: offset
@@ -151,7 +151,7 @@ paths:
           example: 0
           type: number
         style: form
-      - description: The number of books to return in range [1,100]
+      - description: "The number of books to return in range [1,100]"
         explode: false
         in: query
         name: number
@@ -190,14 +190,14 @@ paths:
                     - image: https://covers.openlibrary.org/b/id/394001-M.jpg
                       id: 18810398
                       title: The Hobbit
-                      subtitle: or, There and back again
+                      subtitle: "or, There and back again"
                     - image: https://covers.openlibrary.org/b/id/6282709-M.jpg
                       id: 13597674
                       title: The Name of the Wind
-                      subtitle: 'The Kingkiller Chronicle : day one'
+                      subtitle: "The Kingkiller Chronicle : day one"
                     - image: https://covers.openlibrary.org/b/id/13220226-M.jpg
                       id: 20778556
-                      title: 'Two Towers : The Lord of the Rings'
+                      title: "Two Towers : The Lord of the Rings"
                       subtitle: Part Two
                     - title: Frankenstein (Silver Screen Edition)
                       image: https://covers.openlibrary.org/b/id/12791860-M.jpg
@@ -306,7 +306,7 @@ paths:
           example: 8302059
           type: number
         style: simple
-      - description: The number of similar books to return in range [1,100]
+      - description: "The number of similar books to return in range [1,100]"
         explode: false
         in: query
         name: number
@@ -341,7 +341,7 @@ paths:
                       title: Best of Robert Jordan
                       subtitle: The Shadow Rising; The Fires of Heaven; Lord of Chaos;
                         A Crown of Swords (The Wheel of Time Series)
-                    - title: MAR, Volume 7
+                    - title: "MAR, Volume 7"
                       image: https://covers.openlibrary.org/b/id/765103-M.jpg
                       id: 14987824
                     - title: The Daysong of the Knightbird
@@ -388,7 +388,7 @@ paths:
           example: Morgan Housel
           type: string
         style: form
-      - description: The number of authors to skip in range [0,100]
+      - description: "The number of authors to skip in range [0,100]"
         explode: false
         in: query
         name: offset
@@ -397,7 +397,7 @@ paths:
           example: 0
           type: number
         style: form
-      - description: The number of authors to return in range [1,100]
+      - description: "The number of authors to return in range [1,100]"
         explode: false
         in: query
         name: number
